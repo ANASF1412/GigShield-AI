@@ -1,0 +1,10 @@
+streamlit
+fastapi
+uvicorn
+transformers
+datasets
+scikit-learn
+pandas
+numpy
+plotly
+torch
