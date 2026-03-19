@@ -8,7 +8,6 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Hugging Face](https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/)
 [![Machine Learning](https://img.shields.io/badge/Machine_Learning-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![DEVTrails Phase 1](https://img.shields.io/badge/DEVTrails_2026-Phase_1_Winner-blueviolet?style=for-the-badge)](#)
 
 *An AI-powered parametric insurance platform defending gig economy workers from income loss caused by sudden environmental & civic disruptions.*
 
