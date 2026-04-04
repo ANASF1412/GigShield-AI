@@ -2,6 +2,7 @@
 GigShield AI - Configuration Settings
 """
 import os
+import urllib.parse
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,7 +10,34 @@ load_dotenv()
 # ============================================================================
 # DATABASE CONFIGURATION
 # ============================================================================
-MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+def get_safe_mongodb_uri():
+    uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+    
+    # If it's an Atlas URI with the unescaped @ in the password, fix it
+    if "mongodb+srv://" in uri and "@" in uri.split("://")[1]:
+        try:
+            # Basic split to isolate user:pass and host
+            prefix, rest = uri.split("://")
+            userinfo_host = rest.split("/")[0]
+            
+            if "@" in userinfo_host:
+                userinfo, host = userinfo_host.rsplit("@", 1)
+                if ":" in userinfo:
+                    username, password = userinfo.split(":", 1)
+                    # Use quote_plus only if not already encoded
+                    if "%" not in password:
+                        encoded_pass = urllib.parse.quote_plus(password)
+                        new_uri = f"{prefix}://{username}:{encoded_pass}@{host}/"
+                        # Append any query params or DB name
+                        if "/" in rest:
+                            new_uri += rest.split("/", 1)[1]
+                        return new_uri
+        except Exception:
+            pass # Fallback to original if parsing fails
+            
+    return uri
+
+MONGODB_URI = get_safe_mongodb_uri()
 DATABASE_NAME = os.getenv("DATABASE_NAME", "gigshield-ai")
 
 # ============================================================================
