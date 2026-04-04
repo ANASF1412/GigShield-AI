@@ -184,6 +184,21 @@
             "created_at": "2026-04-04T16:44:24.343367",
             "updated_at": "2026-04-04T16:44:24.343367",
             "_id": "a3e17657-30b3-4392-8115-e9b75824b3ac"
+        },
+        {
+            "worker_id": "W014",
+            "name": "AJAY",
+            "city": "Agra",
+            "delivery_zone": "North",
+            "avg_hourly_income": 200.0,
+            "kyc_status": "Verified",
+            "rating": 4.5,
+            "total_deliveries": 0,
+            "total_earnings": 0.0,
+            "total_payouts": 0.0,
+            "created_at": "2026-04-04T17:24:26.624267",
+            "updated_at": "2026-04-04T17:24:26.624267",
+            "_id": "8a093f11-1b74-4f1c-b455-f0bcdeff39ad"
         }
     ],
     "policies": [
@@ -356,6 +371,30 @@
             "created_at": "2026-04-04T16:44:24.351390",
             "updated_at": "2026-04-04T16:44:24.351390",
             "_id": "50198ba8-4caf-4fcc-ba96-27f987e6ed11"
+        },
+        {
+            "policy_id": "P6e81f3a6",
+            "worker_id": "W014",
+            "weekly_premium": 30.0,
+            "coverage_limit": 8000.0,
+            "start_date": "2026-04-04T17:24:26.645683",
+            "end_date": "2026-04-11T17:24:26.645683",
+            "active_status": true,
+            "created_at": "2026-04-04T17:24:26.645683",
+            "updated_at": "2026-04-04T17:24:26.645683",
+            "_id": "7d522541-853c-443e-8f86-cf3b0767152c"
+        },
+        {
+            "policy_id": "Peb11da2f",
+            "worker_id": "W004",
+            "weekly_premium": 35.0,
+            "coverage_limit": 5000.0,
+            "start_date": "2026-04-04T17:24:44.317605",
+            "end_date": "2026-04-11T17:24:44.317605",
+            "active_status": true,
+            "created_at": "2026-04-04T17:24:44.317605",
+            "updated_at": "2026-04-04T17:24:44.317605",
+            "_id": "ae47d25c-ce54-4e32-a31c-06787e2f4ef1"
         }
     ],
     "claims": [
@@ -1096,6 +1135,1536 @@
             "created_at": "2026-04-04T15:55:06.845452",
             "updated_at": "2026-04-04T15:55:06.885264",
             "_id": "811c0843-a06e-4abd-b780-7750013ac37f"
+        },
+        {
+            "claim_id": "CLM47005b95",
+            "policy_id": "P3388871e",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:07.668612",
+            "updated_at": "2026-04-04T17:17:07.698241",
+            "_id": "975b9b5d-b0b3-418d-9b49-48b3c752abc4"
+        },
+        {
+            "claim_id": "CLM2e764aba",
+            "policy_id": "Pc9ae7739",
+            "worker_id": "W002",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 520.0,
+            "created_at": "2026-04-04T17:17:07.705906",
+            "updated_at": "2026-04-04T17:17:07.730373",
+            "_id": "739b9a2d-18ca-4d7d-8a02-39ef04f233e0"
+        },
+        {
+            "claim_id": "CLMd3965e0d",
+            "policy_id": "Pd82a9944",
+            "worker_id": "W003",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 460.0,
+            "created_at": "2026-04-04T17:17:07.737685",
+            "updated_at": "2026-04-04T17:17:07.760191",
+            "_id": "b92fb8cf-5116-48da-b924-f18cc6ce5f98"
+        },
+        {
+            "claim_id": "CLM2dfaddd0",
+            "policy_id": "P99efe80d",
+            "worker_id": "W004",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 500.0,
+            "created_at": "2026-04-04T17:17:07.766786",
+            "updated_at": "2026-04-04T17:17:07.791881",
+            "_id": "11694fec-bc28-4b97-93a6-5a7e46dca35e"
+        },
+        {
+            "claim_id": "CLMcd95afb7",
+            "policy_id": "P0a77f754",
+            "worker_id": "W005",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 540.0,
+            "created_at": "2026-04-04T17:17:07.799371",
+            "updated_at": "2026-04-04T17:17:07.822075",
+            "_id": "2730ced4-6f61-4ea7-accf-01647a9a90bf"
+        },
+        {
+            "claim_id": "CLM28259cf0",
+            "policy_id": "Pd6b525be",
+            "worker_id": "W006",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:17:07.828705",
+            "updated_at": "2026-04-04T17:17:07.854931",
+            "_id": "f4837bb7-95b8-4526-be68-881f3c4a2537"
+        },
+        {
+            "claim_id": "CLMd1d2db00",
+            "policy_id": "P88b9dc5b",
+            "worker_id": "W007",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.02,
+            "created_at": "2026-04-04T17:17:07.862636",
+            "updated_at": "2026-04-04T17:17:07.887601",
+            "_id": "734b2ef5-2a86-4bbd-a7aa-b3c1d4bf3696"
+        },
+        {
+            "claim_id": "CLMa9cb15df",
+            "policy_id": "Pe615e66a",
+            "worker_id": "W008",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1800.0,
+            "created_at": "2026-04-04T17:17:07.896897",
+            "updated_at": "2026-04-04T17:17:07.921483",
+            "_id": "28c9d33c-b279-4a10-8d44-031d545174a8"
+        },
+        {
+            "claim_id": "CLM4e457839",
+            "policy_id": "Pd8444106",
+            "worker_id": "W009",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:07.931060",
+            "updated_at": "2026-04-04T17:17:07.958276",
+            "_id": "091f3cad-c521-467d-86b6-dfa65acc9432"
+        },
+        {
+            "claim_id": "CLMa3366acb",
+            "policy_id": "Pe6db08f3",
+            "worker_id": "W010",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 800.0,
+            "created_at": "2026-04-04T17:17:07.967934",
+            "updated_at": "2026-04-04T17:17:07.993775",
+            "_id": "c6fdd522-9cd1-422e-932d-b964bdcbd6e4"
+        },
+        {
+            "claim_id": "CLM3798f46e",
+            "policy_id": "P63fd6c42",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:08.002488",
+            "updated_at": "2026-04-04T17:17:08.032236",
+            "_id": "dfb8ff8d-c8f7-44c1-a7eb-6fce26bce5fa"
+        },
+        {
+            "claim_id": "CLMfa1acc5f",
+            "policy_id": "Pda2e35ed",
+            "worker_id": "W011",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1380.0,
+            "created_at": "2026-04-04T17:17:08.040886",
+            "updated_at": "2026-04-04T17:17:08.069115",
+            "_id": "d804caa5-3d4e-446f-816c-16d32841cd44"
+        },
+        {
+            "claim_id": "CLM3734429f",
+            "policy_id": "P253631d0",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:08.077965",
+            "updated_at": "2026-04-04T17:17:08.099619",
+            "_id": "08f8093e-908e-46d3-9c77-8f54c06c8847"
+        },
+        {
+            "claim_id": "CLM408fa641",
+            "policy_id": "Pb3f49315",
+            "worker_id": "W012",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:17:08.108537",
+            "updated_at": "2026-04-04T17:17:08.136225",
+            "_id": "e2a448bf-f1b6-4555-81bc-95562bab24db"
+        },
+        {
+            "claim_id": "CLM5d6d811d",
+            "policy_id": "P2b18084e",
+            "worker_id": "W013",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1400.0,
+            "created_at": "2026-04-04T17:17:08.147131",
+            "updated_at": "2026-04-04T17:17:08.172075",
+            "_id": "de25df08-38ba-48e3-a230-fdf842642701"
+        },
+        {
+            "claim_id": "CLMd0943c10",
+            "policy_id": "P3388871e",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:30.629246",
+            "updated_at": "2026-04-04T17:17:30.654853",
+            "_id": "76fe8309-d3fa-4b93-8f81-0ef2c9519d4f"
+        },
+        {
+            "claim_id": "CLMc3282773",
+            "policy_id": "Pc9ae7739",
+            "worker_id": "W002",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 520.0,
+            "created_at": "2026-04-04T17:17:30.665988",
+            "updated_at": "2026-04-04T17:17:30.697813",
+            "_id": "1b696597-e182-46bf-a8bf-bded14e8228d"
+        },
+        {
+            "claim_id": "CLMf3af645c",
+            "policy_id": "Pd82a9944",
+            "worker_id": "W003",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 460.0,
+            "created_at": "2026-04-04T17:17:30.705951",
+            "updated_at": "2026-04-04T17:17:30.731781",
+            "_id": "c59cc1a4-c846-4533-8c76-00000232d9e5"
+        },
+        {
+            "claim_id": "CLM06813ec8",
+            "policy_id": "P99efe80d",
+            "worker_id": "W004",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 500.0,
+            "created_at": "2026-04-04T17:17:30.740174",
+            "updated_at": "2026-04-04T17:17:30.767348",
+            "_id": "8b06f798-6efa-4652-bc32-268498b6d6b8"
+        },
+        {
+            "claim_id": "CLM6bbb59eb",
+            "policy_id": "P0a77f754",
+            "worker_id": "W005",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 540.0,
+            "created_at": "2026-04-04T17:17:30.777117",
+            "updated_at": "2026-04-04T17:17:30.797172",
+            "_id": "57837fd6-059a-4487-90bc-6d8f9e160883"
+        },
+        {
+            "claim_id": "CLM4151ea62",
+            "policy_id": "Pd6b525be",
+            "worker_id": "W006",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:17:30.807150",
+            "updated_at": "2026-04-04T17:17:30.832518",
+            "_id": "f24bcbb2-e00b-4d37-8398-9a61b1fa195b"
+        },
+        {
+            "claim_id": "CLMd6652849",
+            "policy_id": "P88b9dc5b",
+            "worker_id": "W007",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.02,
+            "created_at": "2026-04-04T17:17:30.841736",
+            "updated_at": "2026-04-04T17:17:30.864157",
+            "_id": "b7d3a942-5479-44cf-aa0d-e46985409415"
+        },
+        {
+            "claim_id": "CLM8d6a2c58",
+            "policy_id": "Pe615e66a",
+            "worker_id": "W008",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1800.0,
+            "created_at": "2026-04-04T17:17:30.871786",
+            "updated_at": "2026-04-04T17:17:30.897409",
+            "_id": "99d2e4a7-d36d-4f96-bfdf-b5cbad967679"
+        },
+        {
+            "claim_id": "CLMcef20b24",
+            "policy_id": "Pd8444106",
+            "worker_id": "W009",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:30.905880",
+            "updated_at": "2026-04-04T17:17:30.930663",
+            "_id": "10cbf228-19b7-45db-b52b-4635349faf7f"
+        },
+        {
+            "claim_id": "CLMf5ab68f5",
+            "policy_id": "Pe6db08f3",
+            "worker_id": "W010",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 800.0,
+            "created_at": "2026-04-04T17:17:30.941051",
+            "updated_at": "2026-04-04T17:17:30.969015",
+            "_id": "cefbc953-d2e1-46c5-8de4-3df41038735a"
+        },
+        {
+            "claim_id": "CLMec145c02",
+            "policy_id": "P63fd6c42",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:30.980206",
+            "updated_at": "2026-04-04T17:17:31.005497",
+            "_id": "81b89c24-7039-4a4a-8248-b2c7c07f8fe0"
+        },
+        {
+            "claim_id": "CLM5b2a2ffa",
+            "policy_id": "Pda2e35ed",
+            "worker_id": "W011",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1380.0,
+            "created_at": "2026-04-04T17:17:31.016372",
+            "updated_at": "2026-04-04T17:17:31.042596",
+            "_id": "eb1a5bff-e39b-4075-8b60-c28f731781dc"
+        },
+        {
+            "claim_id": "CLMf4c0125c",
+            "policy_id": "P253631d0",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:17:31.051852",
+            "updated_at": "2026-04-04T17:17:31.078278",
+            "_id": "95bfa398-d854-4e85-a602-3eb6514b3609"
+        },
+        {
+            "claim_id": "CLM5269e1e2",
+            "policy_id": "Pb3f49315",
+            "worker_id": "W012",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:17:31.085330",
+            "updated_at": "2026-04-04T17:17:31.113034",
+            "_id": "f7bbeab2-c0a3-40ee-b100-79c469549f36"
+        },
+        {
+            "claim_id": "CLM8751ba6a",
+            "policy_id": "P2b18084e",
+            "worker_id": "W013",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1400.0,
+            "created_at": "2026-04-04T17:17:31.122884",
+            "updated_at": "2026-04-04T17:17:31.150753",
+            "_id": "a815a065-e050-4471-a853-5ac1219d32be"
+        },
+        {
+            "claim_id": "CLMdada46bd",
+            "policy_id": "P3388871e",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:10.398852",
+            "updated_at": "2026-04-04T17:18:10.430806",
+            "_id": "7e5702a5-afe4-448f-ac0c-ef60569f3fcd"
+        },
+        {
+            "claim_id": "CLM49d02477",
+            "policy_id": "Pc9ae7739",
+            "worker_id": "W002",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 520.0,
+            "created_at": "2026-04-04T17:18:10.441829",
+            "updated_at": "2026-04-04T17:18:10.472931",
+            "_id": "763764c2-060b-44e4-85d9-006a015570df"
+        },
+        {
+            "claim_id": "CLM08c61945",
+            "policy_id": "Pd82a9944",
+            "worker_id": "W003",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 460.0,
+            "created_at": "2026-04-04T17:18:10.486743",
+            "updated_at": "2026-04-04T17:18:10.515154",
+            "_id": "893a1956-9706-4f59-a849-d288ea08b589"
+        },
+        {
+            "claim_id": "CLM1bb923f6",
+            "policy_id": "P99efe80d",
+            "worker_id": "W004",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 500.0,
+            "created_at": "2026-04-04T17:18:10.527989",
+            "updated_at": "2026-04-04T17:18:10.558764",
+            "_id": "500bd1a3-1284-4ede-8ab4-fafff1120595"
+        },
+        {
+            "claim_id": "CLMb7e8a20d",
+            "policy_id": "P0a77f754",
+            "worker_id": "W005",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 540.0,
+            "created_at": "2026-04-04T17:18:10.571582",
+            "updated_at": "2026-04-04T17:18:10.608172",
+            "_id": "30555b25-3920-480d-ad20-f54e945c7ed5"
+        },
+        {
+            "claim_id": "CLMd3ab33e4",
+            "policy_id": "Pd6b525be",
+            "worker_id": "W006",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:18:10.618997",
+            "updated_at": "2026-04-04T17:18:10.651720",
+            "_id": "46524f64-a7c3-40bb-8548-9d3a7186f00f"
+        },
+        {
+            "claim_id": "CLMb885f81d",
+            "policy_id": "P88b9dc5b",
+            "worker_id": "W007",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.02,
+            "created_at": "2026-04-04T17:18:10.665917",
+            "updated_at": "2026-04-04T17:18:10.688974",
+            "_id": "04fd0e73-1281-4f93-b8e0-0dadc939d240"
+        },
+        {
+            "claim_id": "CLMefb3e8b8",
+            "policy_id": "Pe615e66a",
+            "worker_id": "W008",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1800.0,
+            "created_at": "2026-04-04T17:18:10.700637",
+            "updated_at": "2026-04-04T17:18:10.729269",
+            "_id": "ddc555ff-5bf4-433b-8c1a-a65c5b46274b"
+        },
+        {
+            "claim_id": "CLM59fa2d8b",
+            "policy_id": "Pd8444106",
+            "worker_id": "W009",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:10.739923",
+            "updated_at": "2026-04-04T17:18:10.771291",
+            "_id": "a702a4d5-4741-4a1e-903f-82b2eef576fb"
+        },
+        {
+            "claim_id": "CLM8bdc39e9",
+            "policy_id": "Pe6db08f3",
+            "worker_id": "W010",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 800.0,
+            "created_at": "2026-04-04T17:18:10.783018",
+            "updated_at": "2026-04-04T17:18:10.808273",
+            "_id": "d8928d5b-ca9e-4270-9660-3ef72c4af59a"
+        },
+        {
+            "claim_id": "CLM13fd86f2",
+            "policy_id": "P63fd6c42",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:10.818705",
+            "updated_at": "2026-04-04T17:18:10.845688",
+            "_id": "21bdd80f-0d11-4c24-a07b-97abed834cfc"
+        },
+        {
+            "claim_id": "CLMac28e54b",
+            "policy_id": "Pda2e35ed",
+            "worker_id": "W011",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1380.0,
+            "created_at": "2026-04-04T17:18:10.856571",
+            "updated_at": "2026-04-04T17:18:10.893613",
+            "_id": "71a91e39-9aff-4161-bbf5-9712b685707e"
+        },
+        {
+            "claim_id": "CLM1f01cf39",
+            "policy_id": "P253631d0",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:10.906608",
+            "updated_at": "2026-04-04T17:18:10.932234",
+            "_id": "f25b41ad-61de-49bf-893d-b91caa8b9883"
+        },
+        {
+            "claim_id": "CLM00fa5d14",
+            "policy_id": "Pb3f49315",
+            "worker_id": "W012",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:18:10.944968",
+            "updated_at": "2026-04-04T17:18:10.972844",
+            "_id": "3cf78fec-2d92-47ec-ab78-4bcc9c9bb32a"
+        },
+        {
+            "claim_id": "CLM0884b604",
+            "policy_id": "P2b18084e",
+            "worker_id": "W013",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1400.0,
+            "created_at": "2026-04-04T17:18:10.984755",
+            "updated_at": "2026-04-04T17:18:11.014363",
+            "_id": "d7adc2bc-fc41-4679-b010-e9dacc56dc21"
+        },
+        {
+            "claim_id": "CLM7534ff3c",
+            "policy_id": "P3388871e",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:41.086751",
+            "updated_at": "2026-04-04T17:18:41.117629",
+            "_id": "0aebb4ff-0753-4532-978b-ea94421e5be3"
+        },
+        {
+            "claim_id": "CLMe617e120",
+            "policy_id": "Pc9ae7739",
+            "worker_id": "W002",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 520.0,
+            "created_at": "2026-04-04T17:18:41.131286",
+            "updated_at": "2026-04-04T17:18:41.161487",
+            "_id": "5c655b57-f140-4bb4-9c1d-4562a28e67cf"
+        },
+        {
+            "claim_id": "CLM61047f50",
+            "policy_id": "Pd82a9944",
+            "worker_id": "W003",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 460.0,
+            "created_at": "2026-04-04T17:18:41.174722",
+            "updated_at": "2026-04-04T17:18:41.205107",
+            "_id": "4cbfad56-e056-4087-beb6-68cbdc819bfa"
+        },
+        {
+            "claim_id": "CLM6db54411",
+            "policy_id": "P99efe80d",
+            "worker_id": "W004",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 500.0,
+            "created_at": "2026-04-04T17:18:41.218354",
+            "updated_at": "2026-04-04T17:18:41.252667",
+            "_id": "c4dda7dd-5342-4f7c-93b2-42e3a4bef6da"
+        },
+        {
+            "claim_id": "CLM4e693427",
+            "policy_id": "P0a77f754",
+            "worker_id": "W005",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 540.0,
+            "created_at": "2026-04-04T17:18:41.266304",
+            "updated_at": "2026-04-04T17:18:41.295215",
+            "_id": "beebed64-625d-4735-b25f-48623ac6e569"
+        },
+        {
+            "claim_id": "CLM14f86a17",
+            "policy_id": "Pd6b525be",
+            "worker_id": "W006",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:18:41.306376",
+            "updated_at": "2026-04-04T17:18:41.334918",
+            "_id": "1b7c8262-88cc-4bc1-8000-5cd4adafc3c8"
+        },
+        {
+            "claim_id": "CLM56bc728f",
+            "policy_id": "P88b9dc5b",
+            "worker_id": "W007",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.02,
+            "created_at": "2026-04-04T17:18:41.348156",
+            "updated_at": "2026-04-04T17:18:41.372858",
+            "_id": "35a4497d-8241-4414-bd4d-6608c79de3bc"
+        },
+        {
+            "claim_id": "CLM21b9170b",
+            "policy_id": "Pe615e66a",
+            "worker_id": "W008",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1800.0,
+            "created_at": "2026-04-04T17:18:41.384504",
+            "updated_at": "2026-04-04T17:18:41.414368",
+            "_id": "55ce1eac-cec1-42b0-b923-1994a8037c78"
+        },
+        {
+            "claim_id": "CLM03ab9354",
+            "policy_id": "Pd8444106",
+            "worker_id": "W009",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:41.427225",
+            "updated_at": "2026-04-04T17:18:41.459294",
+            "_id": "de9667e9-810c-4d5b-9828-c3a5025ea376"
+        },
+        {
+            "claim_id": "CLM9784d22b",
+            "policy_id": "Pe6db08f3",
+            "worker_id": "W010",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 800.0,
+            "created_at": "2026-04-04T17:18:41.472300",
+            "updated_at": "2026-04-04T17:18:41.501388",
+            "_id": "b2ae3089-ce73-4905-98f0-6c84e2a7860b"
+        },
+        {
+            "claim_id": "CLMa12a838d",
+            "policy_id": "P63fd6c42",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:41.515497",
+            "updated_at": "2026-04-04T17:18:41.546835",
+            "_id": "55ab2f13-791d-42d3-ac22-703475315028"
+        },
+        {
+            "claim_id": "CLM791f0b7d",
+            "policy_id": "Pda2e35ed",
+            "worker_id": "W011",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1380.0,
+            "created_at": "2026-04-04T17:18:41.560595",
+            "updated_at": "2026-04-04T17:18:41.590183",
+            "_id": "e5ff9aa2-908c-4cd9-a24a-3d273f2aaa85"
+        },
+        {
+            "claim_id": "CLMb2ebb330",
+            "policy_id": "P253631d0",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:18:41.604183",
+            "updated_at": "2026-04-04T17:18:41.630670",
+            "_id": "a03742c8-3453-45a6-a313-f175813a92a8"
+        },
+        {
+            "claim_id": "CLMd240f6b4",
+            "policy_id": "Pb3f49315",
+            "worker_id": "W012",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:18:41.642797",
+            "updated_at": "2026-04-04T17:18:41.666988",
+            "_id": "3be590d8-308b-4cc0-bfac-d6fdc7c3677a"
+        },
+        {
+            "claim_id": "CLM29c4ceab",
+            "policy_id": "P2b18084e",
+            "worker_id": "W013",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1400.0,
+            "created_at": "2026-04-04T17:18:41.679361",
+            "updated_at": "2026-04-04T17:18:41.716739",
+            "_id": "d17cbd05-2bd8-4b12-ae53-ff500e52bd51"
+        },
+        {
+            "claim_id": "CLMe1755b2f",
+            "policy_id": "P3388871e",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:04.011703",
+            "updated_at": "2026-04-04T17:19:04.046977",
+            "_id": "df1a7def-0c28-4fd2-bad4-c5c24052e1f1"
+        },
+        {
+            "claim_id": "CLM7227b229",
+            "policy_id": "Pc9ae7739",
+            "worker_id": "W002",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 520.0,
+            "created_at": "2026-04-04T17:19:04.060642",
+            "updated_at": "2026-04-04T17:19:04.092361",
+            "_id": "c1c10158-3d61-4f9a-b0d1-6562e5e4c5ca"
+        },
+        {
+            "claim_id": "CLM32d89655",
+            "policy_id": "Pd82a9944",
+            "worker_id": "W003",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 460.0,
+            "created_at": "2026-04-04T17:19:04.109051",
+            "updated_at": "2026-04-04T17:19:04.145901",
+            "_id": "ba75ee71-416b-459c-9b63-23d35c3060c5"
+        },
+        {
+            "claim_id": "CLMe222bdc5",
+            "policy_id": "P99efe80d",
+            "worker_id": "W004",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 500.0,
+            "created_at": "2026-04-04T17:19:04.160881",
+            "updated_at": "2026-04-04T17:19:04.193444",
+            "_id": "5b344621-ec0a-409d-8bf9-15b606a29451"
+        },
+        {
+            "claim_id": "CLM8699973b",
+            "policy_id": "P0a77f754",
+            "worker_id": "W005",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 540.0,
+            "created_at": "2026-04-04T17:19:04.208900",
+            "updated_at": "2026-04-04T17:19:04.240250",
+            "_id": "41cbc070-7f39-45f0-a613-af0fd623d0b7"
+        },
+        {
+            "claim_id": "CLM611d911c",
+            "policy_id": "Pd6b525be",
+            "worker_id": "W006",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:19:04.255694",
+            "updated_at": "2026-04-04T17:19:04.291735",
+            "_id": "2d631af6-b47b-4856-9d3b-85c450736f6e"
+        },
+        {
+            "claim_id": "CLM97c33f63",
+            "policy_id": "P88b9dc5b",
+            "worker_id": "W007",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.02,
+            "created_at": "2026-04-04T17:19:04.306514",
+            "updated_at": "2026-04-04T17:19:04.339814",
+            "_id": "077eb3eb-d798-4a54-818f-d173b61a96a2"
+        },
+        {
+            "claim_id": "CLM399770db",
+            "policy_id": "Pe615e66a",
+            "worker_id": "W008",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1800.0,
+            "created_at": "2026-04-04T17:19:04.353349",
+            "updated_at": "2026-04-04T17:19:04.385871",
+            "_id": "7382e1e3-5862-4f2f-86d3-a5b58188f6d7"
+        },
+        {
+            "claim_id": "CLM3010ea93",
+            "policy_id": "Pd8444106",
+            "worker_id": "W009",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:04.401675",
+            "updated_at": "2026-04-04T17:19:04.433371",
+            "_id": "8fa31a3b-05c5-4b4d-b8a4-8772c9da4a83"
+        },
+        {
+            "claim_id": "CLMeb277043",
+            "policy_id": "Pe6db08f3",
+            "worker_id": "W010",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 800.0,
+            "created_at": "2026-04-04T17:19:04.448544",
+            "updated_at": "2026-04-04T17:19:04.477519",
+            "_id": "2631a7ab-d2ef-43c1-b354-6f54eb821c8f"
+        },
+        {
+            "claim_id": "CLM61111207",
+            "policy_id": "P63fd6c42",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:04.493806",
+            "updated_at": "2026-04-04T17:19:04.525377",
+            "_id": "958230a0-3bec-413f-a08a-e35077bbf241"
+        },
+        {
+            "claim_id": "CLMba938377",
+            "policy_id": "Pda2e35ed",
+            "worker_id": "W011",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1380.0,
+            "created_at": "2026-04-04T17:19:04.539849",
+            "updated_at": "2026-04-04T17:19:04.572342",
+            "_id": "460652b7-36a9-43d6-9e3b-e0eb2a79cbcd"
+        },
+        {
+            "claim_id": "CLM2fa07f38",
+            "policy_id": "P253631d0",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:04.587162",
+            "updated_at": "2026-04-04T17:19:04.616679",
+            "_id": "42ef3154-705f-49b9-b7c6-f97b57d57cbf"
+        },
+        {
+            "claim_id": "CLM628fb863",
+            "policy_id": "Pb3f49315",
+            "worker_id": "W012",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:19:04.630923",
+            "updated_at": "2026-04-04T17:19:04.660211",
+            "_id": "72768114-3ce7-4475-b658-f3fb08a58e36"
+        },
+        {
+            "claim_id": "CLMe8245395",
+            "policy_id": "P2b18084e",
+            "worker_id": "W013",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1400.0,
+            "created_at": "2026-04-04T17:19:04.675922",
+            "updated_at": "2026-04-04T17:19:04.701836",
+            "_id": "21bac2c6-c5d3-40a0-afc3-f978a6dccc6c"
+        },
+        {
+            "claim_id": "CLM1fdc6023",
+            "policy_id": "P3388871e",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:23.929539",
+            "updated_at": "2026-04-04T17:19:23.965692",
+            "_id": "768a0b82-e3f1-42e5-9ae2-893abac29e16"
+        },
+        {
+            "claim_id": "CLM33e78be7",
+            "policy_id": "Pc9ae7739",
+            "worker_id": "W002",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 520.0,
+            "created_at": "2026-04-04T17:19:23.980846",
+            "updated_at": "2026-04-04T17:19:24.010986",
+            "_id": "e3f71932-dc9e-4d6a-85b6-2a1d138a04ec"
+        },
+        {
+            "claim_id": "CLMdaf171bf",
+            "policy_id": "Pd82a9944",
+            "worker_id": "W003",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 460.0,
+            "created_at": "2026-04-04T17:19:24.026911",
+            "updated_at": "2026-04-04T17:19:24.061013",
+            "_id": "80823469-a64e-4e85-928e-1798236e59d2"
+        },
+        {
+            "claim_id": "CLMf9857a45",
+            "policy_id": "P99efe80d",
+            "worker_id": "W004",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 500.0,
+            "created_at": "2026-04-04T17:19:24.077100",
+            "updated_at": "2026-04-04T17:19:24.110318",
+            "_id": "004f6a01-ecc2-4ffd-b769-98668ad42fa1"
+        },
+        {
+            "claim_id": "CLM18442f76",
+            "policy_id": "P0a77f754",
+            "worker_id": "W005",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 540.0,
+            "created_at": "2026-04-04T17:19:24.126957",
+            "updated_at": "2026-04-04T17:19:24.162393",
+            "_id": "23e563e6-e2ca-4f02-aa82-470a0acc6dd0"
+        },
+        {
+            "claim_id": "CLM33206592",
+            "policy_id": "Pd6b525be",
+            "worker_id": "W006",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:19:24.178336",
+            "updated_at": "2026-04-04T17:19:24.211958",
+            "_id": "c96a22ca-22e2-4606-a24d-20ecafb945aa"
+        },
+        {
+            "claim_id": "CLM5bd19db6",
+            "policy_id": "P88b9dc5b",
+            "worker_id": "W007",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.02,
+            "created_at": "2026-04-04T17:19:24.228193",
+            "updated_at": "2026-04-04T17:19:24.261400",
+            "_id": "1f8454a4-7ffc-42dc-91ab-d744694e49c3"
+        },
+        {
+            "claim_id": "CLM06ca6500",
+            "policy_id": "Pe615e66a",
+            "worker_id": "W008",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1800.0,
+            "created_at": "2026-04-04T17:19:24.277529",
+            "updated_at": "2026-04-04T17:19:24.313868",
+            "_id": "242b9aca-d74e-46da-a51b-399b9f69d171"
+        },
+        {
+            "claim_id": "CLM70767aea",
+            "policy_id": "Pd8444106",
+            "worker_id": "W009",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:24.329458",
+            "updated_at": "2026-04-04T17:19:24.360507",
+            "_id": "a9616e83-cb1c-4c97-9691-e9672ade53c3"
+        },
+        {
+            "claim_id": "CLM8bc477bf",
+            "policy_id": "Pe6db08f3",
+            "worker_id": "W010",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 800.0,
+            "created_at": "2026-04-04T17:19:24.375715",
+            "updated_at": "2026-04-04T17:19:24.408953",
+            "_id": "29f28280-22e1-49c2-b27e-244bfebfed5c"
+        },
+        {
+            "claim_id": "CLMbaa68b1d",
+            "policy_id": "P63fd6c42",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:24.424257",
+            "updated_at": "2026-04-04T17:19:24.455893",
+            "_id": "4be81c43-780e-4c42-a0d2-a713c55efe18"
+        },
+        {
+            "claim_id": "CLM2558de6f",
+            "policy_id": "Pda2e35ed",
+            "worker_id": "W011",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1380.0,
+            "created_at": "2026-04-04T17:19:24.471466",
+            "updated_at": "2026-04-04T17:19:24.499983",
+            "_id": "d19a1a65-363f-4748-80e2-09f84539f6ce"
+        },
+        {
+            "claim_id": "CLMdbe45c8d",
+            "policy_id": "P253631d0",
+            "worker_id": "W001",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 480.0,
+            "created_at": "2026-04-04T17:19:24.514464",
+            "updated_at": "2026-04-04T17:19:24.543205",
+            "_id": "c4962ac0-49f0-4200-baf3-e33e7331949c"
+        },
+        {
+            "claim_id": "CLMfa7fb9f1",
+            "policy_id": "Pb3f49315",
+            "worker_id": "W012",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 600.0,
+            "created_at": "2026-04-04T17:19:24.561876",
+            "updated_at": "2026-04-04T17:19:24.600316",
+            "_id": "749f969b-054b-4d69-8a32-40e9f10751e1"
+        },
+        {
+            "claim_id": "CLMf15d14ff",
+            "policy_id": "P2b18084e",
+            "worker_id": "W013",
+            "event_type": "Heavy Rain",
+            "trigger_conditions": [
+                "Rainfall > 50.0mm (180.0mm detected)"
+            ],
+            "claim_status": "Approved",
+            "fraud_score": 0.0,
+            "fraud_status": "Cleared",
+            "estimated_loss": 0.0,
+            "approved_payout": 1400.0,
+            "created_at": "2026-04-04T17:19:24.618071",
+            "updated_at": "2026-04-04T17:19:24.651230",
+            "_id": "ccd3b7c3-c252-4cd5-aca8-68ffadc63bba"
         }
     ],
     "payouts": [
@@ -1566,6 +3135,1086 @@
             "completed_at": null,
             "_id": "89c755fd-69c8-48a6-a41d-8a30edc11730",
             "created_at": "2026-04-04T15:55:06.890397"
+        },
+        {
+            "payout_id": "PO92cb09c2",
+            "claim_id": "CLM47005b95",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.701265",
+            "completed_at": null,
+            "_id": "fa6d4d06-7b0c-461e-ba5d-2866560b38cf",
+            "created_at": "2026-04-04T17:17:07.701265"
+        },
+        {
+            "payout_id": "POc434531d",
+            "claim_id": "CLM2e764aba",
+            "worker_id": "W002",
+            "amount": 520.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.733394",
+            "completed_at": null,
+            "_id": "b7430d12-753e-497e-9fa2-db83d385bafc",
+            "created_at": "2026-04-04T17:17:07.733394"
+        },
+        {
+            "payout_id": "POb0a5c674",
+            "claim_id": "CLMd3965e0d",
+            "worker_id": "W003",
+            "amount": 460.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.763242",
+            "completed_at": null,
+            "_id": "562d6bac-7d16-42f5-9c8c-22a2a5238485",
+            "created_at": "2026-04-04T17:17:07.763242"
+        },
+        {
+            "payout_id": "PO994c9dac",
+            "claim_id": "CLM2dfaddd0",
+            "worker_id": "W004",
+            "amount": 500.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.795949",
+            "completed_at": null,
+            "_id": "c67069fe-c7c9-4212-9483-2fd77b8c5e73",
+            "created_at": "2026-04-04T17:17:07.795949"
+        },
+        {
+            "payout_id": "POd614e3cf",
+            "claim_id": "CLMcd95afb7",
+            "worker_id": "W005",
+            "amount": 540.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.825609",
+            "completed_at": null,
+            "_id": "28d80063-5a3b-4301-afaf-849e21eec884",
+            "created_at": "2026-04-04T17:17:07.825609"
+        },
+        {
+            "payout_id": "PO65e7da32",
+            "claim_id": "CLM28259cf0",
+            "worker_id": "W006",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.859334",
+            "completed_at": null,
+            "_id": "4cabe638-16b0-4f23-b85c-a9008c637b2d",
+            "created_at": "2026-04-04T17:17:07.859334"
+        },
+        {
+            "payout_id": "PO254c3ad9",
+            "claim_id": "CLMd1d2db00",
+            "worker_id": "W007",
+            "amount": 480.02,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.892849",
+            "completed_at": null,
+            "_id": "8737d208-29a5-45c9-963e-c698a607c495",
+            "created_at": "2026-04-04T17:17:07.892849"
+        },
+        {
+            "payout_id": "POb84c937c",
+            "claim_id": "CLMa9cb15df",
+            "worker_id": "W008",
+            "amount": 1800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.926180",
+            "completed_at": null,
+            "_id": "7b93ebb7-3f93-4e93-853b-9c19776f8259",
+            "created_at": "2026-04-04T17:17:07.926180"
+        },
+        {
+            "payout_id": "POd36971ae",
+            "claim_id": "CLM4e457839",
+            "worker_id": "W009",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.963732",
+            "completed_at": null,
+            "_id": "d43191fb-f1b1-4b86-8574-b04049bd8376",
+            "created_at": "2026-04-04T17:17:07.963732"
+        },
+        {
+            "payout_id": "POec0e8aab",
+            "claim_id": "CLMa3366acb",
+            "worker_id": "W010",
+            "amount": 800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:07.998430",
+            "completed_at": null,
+            "_id": "8a4c84af-d3d2-4251-ba2c-f5d0c57ca98a",
+            "created_at": "2026-04-04T17:17:07.998430"
+        },
+        {
+            "payout_id": "POa8adbb25",
+            "claim_id": "CLM3798f46e",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:08.036790",
+            "completed_at": null,
+            "_id": "ef622d5a-a95c-4084-9b9e-27c4ea9f7c44",
+            "created_at": "2026-04-04T17:17:08.036790"
+        },
+        {
+            "payout_id": "PO95fa2478",
+            "claim_id": "CLMfa1acc5f",
+            "worker_id": "W011",
+            "amount": 1380.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:08.072700",
+            "completed_at": null,
+            "_id": "ced6aeff-b535-4503-964b-4c92f87c91fc",
+            "created_at": "2026-04-04T17:17:08.072700"
+        },
+        {
+            "payout_id": "POdadea358",
+            "claim_id": "CLM3734429f",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:08.102646",
+            "completed_at": null,
+            "_id": "803cb2ef-8481-4835-9394-ab7beb149425",
+            "created_at": "2026-04-04T17:17:08.102646"
+        },
+        {
+            "payout_id": "PObba27575",
+            "claim_id": "CLM408fa641",
+            "worker_id": "W012",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:08.140930",
+            "completed_at": null,
+            "_id": "1775740f-f786-4c78-aed5-6a821bae1e6e",
+            "created_at": "2026-04-04T17:17:08.140930"
+        },
+        {
+            "payout_id": "POb410a5d5",
+            "claim_id": "CLM5d6d811d",
+            "worker_id": "W013",
+            "amount": 1400.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:08.177901",
+            "completed_at": null,
+            "_id": "145521a3-a777-42d4-96b6-12d5ab771fec",
+            "created_at": "2026-04-04T17:17:08.177901"
+        },
+        {
+            "payout_id": "POa86925df",
+            "claim_id": "CLMd0943c10",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.660408",
+            "completed_at": null,
+            "_id": "87e68fdf-f98f-405d-946a-bb26fedafe93",
+            "created_at": "2026-04-04T17:17:30.660408"
+        },
+        {
+            "payout_id": "PO4c1e2292",
+            "claim_id": "CLMc3282773",
+            "worker_id": "W002",
+            "amount": 520.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.700821",
+            "completed_at": null,
+            "_id": "927b2705-f47c-4d78-87e5-e101e85ab6d3",
+            "created_at": "2026-04-04T17:17:30.700821"
+        },
+        {
+            "payout_id": "PO4463624e",
+            "claim_id": "CLMf3af645c",
+            "worker_id": "W003",
+            "amount": 460.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.735290",
+            "completed_at": null,
+            "_id": "0498279d-846c-469b-900a-b06f60ccfc68",
+            "created_at": "2026-04-04T17:17:30.735290"
+        },
+        {
+            "payout_id": "POe3017ed9",
+            "claim_id": "CLM06813ec8",
+            "worker_id": "W004",
+            "amount": 500.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.771445",
+            "completed_at": null,
+            "_id": "9d2ea443-7f5a-4bad-bb5e-afa3cf0d59c6",
+            "created_at": "2026-04-04T17:17:30.771445"
+        },
+        {
+            "payout_id": "PO49d5de5b",
+            "claim_id": "CLM6bbb59eb",
+            "worker_id": "W005",
+            "amount": 540.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.802064",
+            "completed_at": null,
+            "_id": "691d5747-6fa5-45b0-b7e6-0ba29d16c96c",
+            "created_at": "2026-04-04T17:17:30.802064"
+        },
+        {
+            "payout_id": "PO1f811785",
+            "claim_id": "CLM4151ea62",
+            "worker_id": "W006",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.837125",
+            "completed_at": null,
+            "_id": "55269907-15de-4238-b49c-405e8aecbc86",
+            "created_at": "2026-04-04T17:17:30.837125"
+        },
+        {
+            "payout_id": "PO49097770",
+            "claim_id": "CLMd6652849",
+            "worker_id": "W007",
+            "amount": 480.02,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.867163",
+            "completed_at": null,
+            "_id": "775b82c3-9f9a-4663-8329-84ce955df126",
+            "created_at": "2026-04-04T17:17:30.867163"
+        },
+        {
+            "payout_id": "PO3ae5c32e",
+            "claim_id": "CLM8d6a2c58",
+            "worker_id": "W008",
+            "amount": 1800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.901440",
+            "completed_at": null,
+            "_id": "76741c2e-b7bd-428c-863f-b3015149439e",
+            "created_at": "2026-04-04T17:17:30.901440"
+        },
+        {
+            "payout_id": "PO274bf2b9",
+            "claim_id": "CLMcef20b24",
+            "worker_id": "W009",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.934784",
+            "completed_at": null,
+            "_id": "18786a4d-5cc9-410a-98ac-564b6839e7d9",
+            "created_at": "2026-04-04T17:17:30.934784"
+        },
+        {
+            "payout_id": "PO44ddc492",
+            "claim_id": "CLMf5ab68f5",
+            "worker_id": "W010",
+            "amount": 800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:30.974043",
+            "completed_at": null,
+            "_id": "49eac611-d442-42a9-8862-aa3a783350a3",
+            "created_at": "2026-04-04T17:17:30.974043"
+        },
+        {
+            "payout_id": "PO8087c1d3",
+            "claim_id": "CLMec145c02",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:31.011659",
+            "completed_at": null,
+            "_id": "e4b7fd47-5795-4061-9a0b-aa8236b9a53b",
+            "created_at": "2026-04-04T17:17:31.011659"
+        },
+        {
+            "payout_id": "POe10e7990",
+            "claim_id": "CLM5b2a2ffa",
+            "worker_id": "W011",
+            "amount": 1380.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:31.047739",
+            "completed_at": null,
+            "_id": "a3829358-14dd-4e29-b5c0-d0e44cf0c592",
+            "created_at": "2026-04-04T17:17:31.047739"
+        },
+        {
+            "payout_id": "POcbb8c89f",
+            "claim_id": "CLMf4c0125c",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:31.081817",
+            "completed_at": null,
+            "_id": "f443d85b-d750-4752-8953-54b05b176dc8",
+            "created_at": "2026-04-04T17:17:31.082820"
+        },
+        {
+            "payout_id": "POd309fd08",
+            "claim_id": "CLM5269e1e2",
+            "worker_id": "W012",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:31.117664",
+            "completed_at": null,
+            "_id": "fac5572d-43c1-404f-95f4-498f84096198",
+            "created_at": "2026-04-04T17:17:31.117664"
+        },
+        {
+            "payout_id": "PO550d3021",
+            "claim_id": "CLM8751ba6a",
+            "worker_id": "W013",
+            "amount": 1400.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:17:31.155267",
+            "completed_at": null,
+            "_id": "a231231d-ef1a-40cc-b175-0a02b99e458a",
+            "created_at": "2026-04-04T17:17:31.155267"
+        },
+        {
+            "payout_id": "POb6bdab1f",
+            "claim_id": "CLMdada46bd",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.436912",
+            "completed_at": null,
+            "_id": "9d6f6ea3-c81d-40cd-8b89-c48c2fef0e13",
+            "created_at": "2026-04-04T17:18:10.436912"
+        },
+        {
+            "payout_id": "PO02bab2e5",
+            "claim_id": "CLM49d02477",
+            "worker_id": "W002",
+            "amount": 520.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.479644",
+            "completed_at": null,
+            "_id": "c8aee063-85b7-4d2c-8185-9bd56788d28e",
+            "created_at": "2026-04-04T17:18:10.479644"
+        },
+        {
+            "payout_id": "PO584e4d2c",
+            "claim_id": "CLM08c61945",
+            "worker_id": "W003",
+            "amount": 460.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.520661",
+            "completed_at": null,
+            "_id": "829042ac-adbb-469a-abf3-e5318dd0466e",
+            "created_at": "2026-04-04T17:18:10.520661"
+        },
+        {
+            "payout_id": "PO57a73160",
+            "claim_id": "CLM1bb923f6",
+            "worker_id": "W004",
+            "amount": 500.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.565342",
+            "completed_at": null,
+            "_id": "06d00046-4e85-4f64-bcfd-f0c37937cee6",
+            "created_at": "2026-04-04T17:18:10.565342"
+        },
+        {
+            "payout_id": "PO47b75d69",
+            "claim_id": "CLMb7e8a20d",
+            "worker_id": "W005",
+            "amount": 540.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.613834",
+            "completed_at": null,
+            "_id": "d3539ae7-79d6-440e-abc5-06924b1d0687",
+            "created_at": "2026-04-04T17:18:10.613834"
+        },
+        {
+            "payout_id": "POd69874c4",
+            "claim_id": "CLMd3ab33e4",
+            "worker_id": "W006",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.659735",
+            "completed_at": null,
+            "_id": "a7d48c6b-2e61-4d1f-b530-f09d25fe4354",
+            "created_at": "2026-04-04T17:18:10.659735"
+        },
+        {
+            "payout_id": "PO05945f6c",
+            "claim_id": "CLMb885f81d",
+            "worker_id": "W007",
+            "amount": 480.02,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.696043",
+            "completed_at": null,
+            "_id": "3f675628-9441-4683-8e90-15cf54cfa161",
+            "created_at": "2026-04-04T17:18:10.696043"
+        },
+        {
+            "payout_id": "POad8d0cd5",
+            "claim_id": "CLMefb3e8b8",
+            "worker_id": "W008",
+            "amount": 1800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.733489",
+            "completed_at": null,
+            "_id": "f1399019-8b96-4d38-96cc-52fbe71eeae0",
+            "created_at": "2026-04-04T17:18:10.733489"
+        },
+        {
+            "payout_id": "PO1e30fe5a",
+            "claim_id": "CLM59fa2d8b",
+            "worker_id": "W009",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.777901",
+            "completed_at": null,
+            "_id": "2873a667-7454-4915-a560-4972bb37ff53",
+            "created_at": "2026-04-04T17:18:10.777901"
+        },
+        {
+            "payout_id": "PO91d8570d",
+            "claim_id": "CLM8bdc39e9",
+            "worker_id": "W010",
+            "amount": 800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.814152",
+            "completed_at": null,
+            "_id": "082c5b20-50a3-4854-a6e8-4000c205dfd6",
+            "created_at": "2026-04-04T17:18:10.814152"
+        },
+        {
+            "payout_id": "POf818a2cd",
+            "claim_id": "CLM13fd86f2",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.849898",
+            "completed_at": null,
+            "_id": "ad0e9138-041d-496a-8082-f7b096432e3a",
+            "created_at": "2026-04-04T17:18:10.849898"
+        },
+        {
+            "payout_id": "PO89c41c10",
+            "claim_id": "CLMac28e54b",
+            "worker_id": "W011",
+            "amount": 1380.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.900296",
+            "completed_at": null,
+            "_id": "444b25e6-ea49-4c2b-b8da-f4aa6d24f2de",
+            "created_at": "2026-04-04T17:18:10.900296"
+        },
+        {
+            "payout_id": "PO3cbf3f1d",
+            "claim_id": "CLM1f01cf39",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.938210",
+            "completed_at": null,
+            "_id": "47a3b9a6-9411-4e50-96bc-e8dae1aab9b3",
+            "created_at": "2026-04-04T17:18:10.938210"
+        },
+        {
+            "payout_id": "POdb05c773",
+            "claim_id": "CLM00fa5d14",
+            "worker_id": "W012",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:10.979613",
+            "completed_at": null,
+            "_id": "27007702-d643-488b-bc97-140a41a7269d",
+            "created_at": "2026-04-04T17:18:10.979613"
+        },
+        {
+            "payout_id": "PO6b016c9b",
+            "claim_id": "CLM0884b604",
+            "worker_id": "W013",
+            "amount": 1400.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:11.018549",
+            "completed_at": null,
+            "_id": "0d1ec153-3123-4a1f-9e5b-e861d4a99911",
+            "created_at": "2026-04-04T17:18:11.018549"
+        },
+        {
+            "payout_id": "POdadbea16",
+            "claim_id": "CLM7534ff3c",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.122825",
+            "completed_at": null,
+            "_id": "41cd6157-2915-45cc-88a8-4407d5cfa892",
+            "created_at": "2026-04-04T17:18:41.122825"
+        },
+        {
+            "payout_id": "POaa24d489",
+            "claim_id": "CLMe617e120",
+            "worker_id": "W002",
+            "amount": 520.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.168580",
+            "completed_at": null,
+            "_id": "2ef6694f-d86f-4473-bace-3c71d8ece7e5",
+            "created_at": "2026-04-04T17:18:41.168580"
+        },
+        {
+            "payout_id": "POe4afc824",
+            "claim_id": "CLM61047f50",
+            "worker_id": "W003",
+            "amount": 460.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.211675",
+            "completed_at": null,
+            "_id": "eb5cc60d-8170-4380-bd50-4f28f9bebcfc",
+            "created_at": "2026-04-04T17:18:41.211675"
+        },
+        {
+            "payout_id": "PO092a1672",
+            "claim_id": "CLM6db54411",
+            "worker_id": "W004",
+            "amount": 500.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.259790",
+            "completed_at": null,
+            "_id": "9247a2bf-161d-45bc-8447-5de6cd07f122",
+            "created_at": "2026-04-04T17:18:41.259790"
+        },
+        {
+            "payout_id": "POb3443db9",
+            "claim_id": "CLM4e693427",
+            "worker_id": "W005",
+            "amount": 540.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.300314",
+            "completed_at": null,
+            "_id": "5e05d753-b8bb-4a12-8918-9c4105ed2b0c",
+            "created_at": "2026-04-04T17:18:41.300314"
+        },
+        {
+            "payout_id": "POac071aef",
+            "claim_id": "CLM14f86a17",
+            "worker_id": "W006",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.342556",
+            "completed_at": null,
+            "_id": "a621f699-72ea-4d22-86cb-2cd07d6c11b1",
+            "created_at": "2026-04-04T17:18:41.342556"
+        },
+        {
+            "payout_id": "POb767043a",
+            "claim_id": "CLM56bc728f",
+            "worker_id": "W007",
+            "amount": 480.02,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.379486",
+            "completed_at": null,
+            "_id": "43e1e497-6a5b-43bc-911a-9fd8791f6f14",
+            "created_at": "2026-04-04T17:18:41.379486"
+        },
+        {
+            "payout_id": "POfb30b0a0",
+            "claim_id": "CLM21b9170b",
+            "worker_id": "W008",
+            "amount": 1800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.420154",
+            "completed_at": null,
+            "_id": "f33d516c-df1a-413e-8f74-184f997a4f52",
+            "created_at": "2026-04-04T17:18:41.420154"
+        },
+        {
+            "payout_id": "PO5833bb51",
+            "claim_id": "CLM03ab9354",
+            "worker_id": "W009",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.465967",
+            "completed_at": null,
+            "_id": "fd6535ab-1e04-41b8-91eb-a7b2909cebe2",
+            "created_at": "2026-04-04T17:18:41.465967"
+        },
+        {
+            "payout_id": "PObdc95a9e",
+            "claim_id": "CLM9784d22b",
+            "worker_id": "W010",
+            "amount": 800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.506875",
+            "completed_at": null,
+            "_id": "49e19600-5c93-4e20-9818-56274acd3032",
+            "created_at": "2026-04-04T17:18:41.506875"
+        },
+        {
+            "payout_id": "PO71c3064d",
+            "claim_id": "CLMa12a838d",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.553786",
+            "completed_at": null,
+            "_id": "d0dbe39d-e884-4b8f-a773-56641f5989f6",
+            "created_at": "2026-04-04T17:18:41.553786"
+        },
+        {
+            "payout_id": "PO4ddd7cbc",
+            "claim_id": "CLM791f0b7d",
+            "worker_id": "W011",
+            "amount": 1380.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.598570",
+            "completed_at": null,
+            "_id": "7e8c7a14-1d0b-4054-b50a-26cdb864d8f5",
+            "created_at": "2026-04-04T17:18:41.598570"
+        },
+        {
+            "payout_id": "POb543607c",
+            "claim_id": "CLMb2ebb330",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.636690",
+            "completed_at": null,
+            "_id": "822005bb-9156-4c17-9dcf-ab9b9a281ecf",
+            "created_at": "2026-04-04T17:18:41.636690"
+        },
+        {
+            "payout_id": "POb073bc8a",
+            "claim_id": "CLMd240f6b4",
+            "worker_id": "W012",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.672767",
+            "completed_at": null,
+            "_id": "97cf928f-0aa8-415e-8c97-95bc6af9cb84",
+            "created_at": "2026-04-04T17:18:41.672767"
+        },
+        {
+            "payout_id": "POefb76392",
+            "claim_id": "CLM29c4ceab",
+            "worker_id": "W013",
+            "amount": 1400.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:18:41.722950",
+            "completed_at": null,
+            "_id": "f090f8d9-51a6-4c59-b278-d2942779de80",
+            "created_at": "2026-04-04T17:18:41.722950"
+        },
+        {
+            "payout_id": "POdd6b81c1",
+            "claim_id": "CLMe1755b2f",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.053534",
+            "completed_at": null,
+            "_id": "3986d916-2e73-45b5-a541-37751af26e5f",
+            "created_at": "2026-04-04T17:19:04.053534"
+        },
+        {
+            "payout_id": "PO828f32f8",
+            "claim_id": "CLM7227b229",
+            "worker_id": "W002",
+            "amount": 520.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.100394",
+            "completed_at": null,
+            "_id": "714bd865-d336-4516-b300-7df38d3bcc2f",
+            "created_at": "2026-04-04T17:19:04.100394"
+        },
+        {
+            "payout_id": "POdf2a67a4",
+            "claim_id": "CLM32d89655",
+            "worker_id": "W003",
+            "amount": 460.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.153298",
+            "completed_at": null,
+            "_id": "ef983264-b513-4aa3-a809-3626fad23b1f",
+            "created_at": "2026-04-04T17:19:04.153298"
+        },
+        {
+            "payout_id": "PObc1253b4",
+            "claim_id": "CLMe222bdc5",
+            "worker_id": "W004",
+            "amount": 500.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.199983",
+            "completed_at": null,
+            "_id": "7653f57e-fd1c-4f81-8bb2-94be8b66c02d",
+            "created_at": "2026-04-04T17:19:04.199983"
+        },
+        {
+            "payout_id": "POc48a6a71",
+            "claim_id": "CLM8699973b",
+            "worker_id": "W005",
+            "amount": 540.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.247810",
+            "completed_at": null,
+            "_id": "7341a1e7-8d69-4e80-add8-613793bef25f",
+            "created_at": "2026-04-04T17:19:04.247810"
+        },
+        {
+            "payout_id": "PO877296ed",
+            "claim_id": "CLM611d911c",
+            "worker_id": "W006",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.299118",
+            "completed_at": null,
+            "_id": "fe7ea9f4-e1c1-45e7-9b97-f19181f29b70",
+            "created_at": "2026-04-04T17:19:04.299118"
+        },
+        {
+            "payout_id": "POa757ab98",
+            "claim_id": "CLM97c33f63",
+            "worker_id": "W007",
+            "amount": 480.02,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.346399",
+            "completed_at": null,
+            "_id": "a0c759a7-06a0-4aa0-a1c0-25f885b789dc",
+            "created_at": "2026-04-04T17:19:04.346399"
+        },
+        {
+            "payout_id": "PO548ea6da",
+            "claim_id": "CLM399770db",
+            "worker_id": "W008",
+            "amount": 1800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.393979",
+            "completed_at": null,
+            "_id": "76c10276-2396-49cd-944a-c1c4d7dba866",
+            "created_at": "2026-04-04T17:19:04.393979"
+        },
+        {
+            "payout_id": "PO041d38dd",
+            "claim_id": "CLM3010ea93",
+            "worker_id": "W009",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.440739",
+            "completed_at": null,
+            "_id": "f5ee93a3-1fcf-47ff-b068-8396015dd8ac",
+            "created_at": "2026-04-04T17:19:04.440739"
+        },
+        {
+            "payout_id": "PO7ebe72ca",
+            "claim_id": "CLMeb277043",
+            "worker_id": "W010",
+            "amount": 800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.485524",
+            "completed_at": null,
+            "_id": "a043f4aa-644a-4d27-8b4c-a2b26aa9db80",
+            "created_at": "2026-04-04T17:19:04.485524"
+        },
+        {
+            "payout_id": "POb3f86f71",
+            "claim_id": "CLM61111207",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.532688",
+            "completed_at": null,
+            "_id": "ddb77e61-a8ac-4540-a214-52c223234059",
+            "created_at": "2026-04-04T17:19:04.532688"
+        },
+        {
+            "payout_id": "PO4b1ecbd2",
+            "claim_id": "CLMba938377",
+            "worker_id": "W011",
+            "amount": 1380.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.580065",
+            "completed_at": null,
+            "_id": "20aaa4cd-832d-4c03-bcf8-252c39a938ad",
+            "created_at": "2026-04-04T17:19:04.580065"
+        },
+        {
+            "payout_id": "POeb4835cf",
+            "claim_id": "CLM2fa07f38",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.622606",
+            "completed_at": null,
+            "_id": "c55de459-5f42-4da1-b584-95e1658f9f0e",
+            "created_at": "2026-04-04T17:19:04.622606"
+        },
+        {
+            "payout_id": "PO4924a446",
+            "claim_id": "CLM628fb863",
+            "worker_id": "W012",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.667684",
+            "completed_at": null,
+            "_id": "3916ccaa-9889-4d71-96e1-04f073b63746",
+            "created_at": "2026-04-04T17:19:04.667684"
+        },
+        {
+            "payout_id": "PO953a74bc",
+            "claim_id": "CLMe8245395",
+            "worker_id": "W013",
+            "amount": 1400.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:04.708525",
+            "completed_at": null,
+            "_id": "bc357f75-9bfb-4b95-93e5-d5f2779c3418",
+            "created_at": "2026-04-04T17:19:04.708525"
+        },
+        {
+            "payout_id": "PO41420849",
+            "claim_id": "CLM1fdc6023",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:23.973228",
+            "completed_at": null,
+            "_id": "c0e60ded-e143-427c-8db5-9a86102f7636",
+            "created_at": "2026-04-04T17:19:23.973228"
+        },
+        {
+            "payout_id": "PO53d9004d",
+            "claim_id": "CLM33e78be7",
+            "worker_id": "W002",
+            "amount": 520.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.018081",
+            "completed_at": null,
+            "_id": "cbceff32-4cb5-4463-a0fa-d5cc05ab608d",
+            "created_at": "2026-04-04T17:19:24.018081"
+        },
+        {
+            "payout_id": "POaf1ece80",
+            "claim_id": "CLMdaf171bf",
+            "worker_id": "W003",
+            "amount": 460.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.069800",
+            "completed_at": null,
+            "_id": "b0cb4e5d-094d-4e85-aae5-118ef3f3aa7b",
+            "created_at": "2026-04-04T17:19:24.069800"
+        },
+        {
+            "payout_id": "PO0356efd9",
+            "claim_id": "CLMf9857a45",
+            "worker_id": "W004",
+            "amount": 500.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.118362",
+            "completed_at": null,
+            "_id": "510bef5c-8d7f-4646-97f9-5f7f9e46ba21",
+            "created_at": "2026-04-04T17:19:24.118362"
+        },
+        {
+            "payout_id": "POd89e0c16",
+            "claim_id": "CLM18442f76",
+            "worker_id": "W005",
+            "amount": 540.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.168656",
+            "completed_at": null,
+            "_id": "b0bd0bc3-fe6a-49b4-a580-994b03ee8da0",
+            "created_at": "2026-04-04T17:19:24.168656"
+        },
+        {
+            "payout_id": "PO1fb068af",
+            "claim_id": "CLM33206592",
+            "worker_id": "W006",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.219133",
+            "completed_at": null,
+            "_id": "7feccb8a-9cb1-4caf-bfdd-27e506f2d7a0",
+            "created_at": "2026-04-04T17:19:24.219133"
+        },
+        {
+            "payout_id": "PO0bdb94e5",
+            "claim_id": "CLM5bd19db6",
+            "worker_id": "W007",
+            "amount": 480.02,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.268804",
+            "completed_at": null,
+            "_id": "c4d08745-1f6d-48b7-865f-70b9569877cc",
+            "created_at": "2026-04-04T17:19:24.268804"
+        },
+        {
+            "payout_id": "PO52a15236",
+            "claim_id": "CLM06ca6500",
+            "worker_id": "W008",
+            "amount": 1800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.320300",
+            "completed_at": null,
+            "_id": "ae565bb5-117f-4afe-8beb-49ad571730da",
+            "created_at": "2026-04-04T17:19:24.320300"
+        },
+        {
+            "payout_id": "PO6d6d4fcb",
+            "claim_id": "CLM70767aea",
+            "worker_id": "W009",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.368515",
+            "completed_at": null,
+            "_id": "173a6505-05eb-447f-9a9b-f09396f134e8",
+            "created_at": "2026-04-04T17:19:24.368515"
+        },
+        {
+            "payout_id": "PO547cce30",
+            "claim_id": "CLM8bc477bf",
+            "worker_id": "W010",
+            "amount": 800.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.417327",
+            "completed_at": null,
+            "_id": "2b64bd9e-775c-483e-b731-5dce05ae8d97",
+            "created_at": "2026-04-04T17:19:24.417327"
+        },
+        {
+            "payout_id": "POe52e54ce",
+            "claim_id": "CLMbaa68b1d",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.464844",
+            "completed_at": null,
+            "_id": "fc0d1761-010d-4829-a2eb-775a42ae6b29",
+            "created_at": "2026-04-04T17:19:24.464844"
+        },
+        {
+            "payout_id": "POcaac0e8c",
+            "claim_id": "CLM2558de6f",
+            "worker_id": "W011",
+            "amount": 1380.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.507620",
+            "completed_at": null,
+            "_id": "9125331e-536b-47b3-ba55-8eac230ac30d",
+            "created_at": "2026-04-04T17:19:24.507620"
+        },
+        {
+            "payout_id": "PO0f490f40",
+            "claim_id": "CLMdbe45c8d",
+            "worker_id": "W001",
+            "amount": 480.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.550790",
+            "completed_at": null,
+            "_id": "0d0e979e-47fc-45e2-a73e-a1a2adeef7a6",
+            "created_at": "2026-04-04T17:19:24.550790"
+        },
+        {
+            "payout_id": "POe728cdeb",
+            "claim_id": "CLMfa7fb9f1",
+            "worker_id": "W012",
+            "amount": 600.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.609577",
+            "completed_at": null,
+            "_id": "7cf721d0-2049-43f9-93ee-fbd68ca46ce3",
+            "created_at": "2026-04-04T17:19:24.609577"
+        },
+        {
+            "payout_id": "POc87b2650",
+            "claim_id": "CLMf15d14ff",
+            "worker_id": "W013",
+            "amount": 1400.0,
+            "status": "Pending",
+            "upi_txn_id": null,
+            "timestamp": "2026-04-04T17:19:24.658314",
+            "completed_at": null,
+            "_id": "203c0e99-9bab-42e8-9c8d-ca66248d0c06",
+            "created_at": "2026-04-04T17:19:24.658314"
         }
     ],
     "zones": [
