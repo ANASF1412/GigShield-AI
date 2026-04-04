@@ -86,6 +86,12 @@ Let's look at how GigShield AI protects a worker's livelihood in real-time:
 - 📉 **Delivery Income Loss Estimation**: Dynamic loss calculation tailored to each worker's historical earn rate.
 - 📊 **Real-time Monitoring Dashboard**: Streamlit-powered transparency layer for operators and workers.
 - 🛡️ **Advanced Fraud Detection**: Next-gen anti-spoofing engine isolating fake claims from genuine distress.
+- 💬 **Context-Aware AI Assistant**: A Claude-powered chatbot grounded in live database context (Claims, Policies, Worker Stats) which explains insurance terminology and personal claim status in plain language.
+- 🛡️ **Zero-Touch Claims Pipeline**: Fully automated detection-to-payment cycle. When sensors hit disruption thresholds (e.g., Rainfall > 50mm), claims are generated and processed in the background without manual human interaction.
+- 📈 **Admin Business Analytics**: A high-level command center for providers featuring user distribution pie charts, claims status, and financial trend visualizations.
+- 🧪 **ML Validation Suite**: A built-in testing suite for admins to verify model sanity across 20+ edge-case scenarios involving extreme weather and AQI levels.
+- 🧠 **Continuous Risk Gradient**: Replaced binary "on/off" risk logic with a continuous probabilistic score (0.0–1.0) using a weighted Random Forest ensemble.
+- 🔍 **Explainability Layer**: The "💡 Quick Trace" feature provides full transparency into *why* a premium was adjusted or *why* a claim was triggered, bridging the gap between AI and human trust.
 
 ---
 
@@ -231,9 +237,10 @@ We heavily utilized the **Hugging Face Ecosystem** to power our text and time-se
 | **Backend/API Core** | FastAPI Python |
 | **Machine Learning** | Scikit-learn, Hugging Face Transformers |
 | **Data Management** | Hugging Face Datasets, Pandas |
-| **Database** | SQLite |
+| **Database** | MongoDB |
 | **Visualization** | Plotly |
-| **External APIs** | OpenWeather API, Live AQI API, Mock UPI |
+| **External APIs** | OpenWeather API, Live AQI API, Mock UPI, Anthropic Claude API |
+| **Large Language Model** | Anthropic Claude-3 |
 
 ---
 
