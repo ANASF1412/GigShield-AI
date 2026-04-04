@@ -201,64 +201,31 @@ class PayoutRepository(BaseRepository):
         """
         return self.delete({"payout_id": payout_id})
 
-    def get_payout_stats(self, worker_id: str = None,
-                        status: str = None) -> Dict[str, Any]:
-        """
-        Get payout statistics.
-
-        Args:
-            worker_id: Optional worker ID filter
-            status: Optional status filter
-
-        Returns:
-            Statistics dictionary
-        """
-        query = {}
+    def get_payout_stats(self, worker_id: str = None, status: str = None) -> Dict[str, Any]:
+        """Get payout statistics using memory logic."""
+        docs = self.find_all()
         if worker_id:
-            query["worker_id"] = worker_id
+            docs = [d for d in docs if d.get("worker_id") == worker_id]
         if status:
-            query["status"] = status
-
-        pipeline = [
-            {"$match": query},
-            {
-                "$group": {
-                    "_id": None,
-                    "total_payouts": {"$sum": 1},
-                    "total_amount": {"$sum": "$amount"},
-                    "avg_amount": {"$avg": "$amount"},
-                }
-            }
-        ]
-
-        result = self.aggregate(pipeline)
-        if result:
-            return result[0]
-
+            docs = [d for d in docs if d.get("status") == status]
+            
+        total_payouts = len(docs)
+        total_amount = sum(float(d.get("amount", 0) or 0) for d in docs)
+        avg_amount = total_amount / total_payouts if total_payouts > 0 else 0
+        
         return {
-            "total_payouts": 0,
-            "total_amount": 0.0,
-            "avg_amount": 0.0,
+            "total_payouts": total_payouts,
+            "total_amount": total_amount,
+            "avg_amount": avg_amount,
         }
 
     def get_total_payout_amount(self, worker_id: str = None) -> float:
-        """
-        Get total payout amount (completed payouts only).
-
-        Args:
-            worker_id: Optional worker ID filter
-
-        Returns:
-            Total amount paid out
-        """
-        query = {"status": PAYOUT_STATUS_COMPLETED}
+        """Get total payout amount using memory logic."""
+        docs = self.find_all()
+        target_status = PAYOUT_STATUS_COMPLETED
+        
+        filter_docs = [d for d in docs if d.get("status") == target_status]
         if worker_id:
-            query["worker_id"] = worker_id
-
-        result = self.collection.aggregate([
-            {"$match": query},
-            {"$group": {"_id": None, "total": {"$sum": "$amount"}}}
-        ])
-
-        result_list = list(result)
-        return result_list[0]["total"] if result_list else 0.0
+            filter_docs = [d for d in filter_docs if d.get("worker_id") == worker_id]
+            
+        return sum(float(d.get("amount", 0) or 0) for d in filter_docs)

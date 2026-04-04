@@ -60,7 +60,7 @@ class BaseRepository:
                     processed_docs = []
                     for doc in raw_docs:
                         for k, v in doc.items():
-                            if isinstance(v, str) and (k.endswith("_at") or k.endswith("_date") or k == "timestamp" or k == "completed_at"):
+                            if isinstance(v, str) and (k.endswith("_at") or k.endswith("_date") or k == "timestamp" or k == "completed_at" or k == "start_date" or k == "end_date"):
                                 try:
                                     doc[k] = parser.parse(v)
                                 except: pass
@@ -105,11 +105,16 @@ class BaseRepository:
         for doc in st.session_state.db_storage[self.collection_name]:
             match = True
             for key, val in query.items():
-                # Handle basic list membership if needed
-                if isinstance(val, dict) and "$in" in val:
-                    if doc.get(key) not in val["$in"]:
+                doc_val = doc.get(key)
+                # Handle MongoDB-style operators
+                if isinstance(val, dict):
+                    if "$in" in val and doc_val not in val["$in"]:
                         match = False; break
-                elif doc.get(key) != val:
+                    if "$gte" in val and not (doc_val and doc_val >= val["$gte"]):
+                        match = False; break
+                    if "$lte" in val and not (doc_val and doc_val <= val["$lte"]):
+                        match = False; break
+                elif doc_val != val:
                     match = False; break
             if match:
                 results.append(doc)

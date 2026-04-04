@@ -262,44 +262,16 @@ class ClaimRepository(BaseRepository):
         return self.delete({"claim_id": claim_id})
 
     def get_claim_stats(self, worker_id: str = None) -> Dict[str, Any]:
-        """
-        Get claim statistics.
-
-        Args:
-            worker_id: Optional worker ID for specific worker stats
-
-        Returns:
-            Statistics dictionary
-        """
-        query = {} if worker_id is None else {"worker_id": worker_id}
-
-        # Aggregate stats
-        pipeline = [
-            {"$match": query},
-            {
-                "$group": {
-                    "_id": None,
-                    "total_claims": {"$sum": 1},
-                    "approved_count": {
-                        "$sum": {"$cond": [{"$eq": ["$claim_status", "Paid"]}, 1, 0]}
-                    },
-                    "flagged_count": {
-                        "$sum": {"$cond": [{"$eq": ["$fraud_status", "Flagged"]}, 1, 0]}
-                    },
-                    "total_loss": {"$sum": "$estimated_loss"},
-                    "total_payout": {"$sum": "$approved_payout"},
-                }
-            }
-        ]
-
-        result = self.aggregate(pipeline)
-        if result:
-            return result[0]
-
-        return {
-            "total_claims": 0,
-            "approved_count": 0,
-            "flagged_count": 0,
-            "total_loss": 0.0,
-            "total_payout": 0.0,
+        """Get claim statistics using memory logic."""
+        docs = self.find_all()
+        if worker_id:
+            docs = [d for d in docs if d.get("worker_id") == worker_id]
+            
+        stats = {
+            "total_claims": len(docs),
+            "approved_count": len([d for d in docs if d.get("claim_status") == "Paid"]),
+            "flagged_count": len([d for d in docs if d.get("fraud_status") == "Flagged"]),
+            "total_loss": sum(float(d.get("estimated_loss", 0) or 0) for d in docs),
+            "total_payout": sum(float(d.get("approved_payout", 0) or 0) for d in docs),
         }
+        return stats
