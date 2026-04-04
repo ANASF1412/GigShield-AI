@@ -17,30 +17,50 @@ class BaseRepository:
         """Initialize with session state storage, pre-populated from seed if available."""
         self.collection_name = collection_name
         
+        # Absolute path to seed data
+        self.seed_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "data", "seed_data.json"))
+        
         # 1. Initialize global storage if not exists
         if "db_storage" not in st.session_state:
             st.session_state.db_storage = {}
         
-        # 2. Initialize specific collection
-        if self.collection_name not in st.session_state.db_storage:
-            st.session_state.db_storage[self.collection_name] = []
+        # 2. Always ensure the collection is initialized
+        if self.collection_name not in st.session_state.db_storage or not st.session_state.db_storage[self.collection_name]:
             self._load_seed_data()
 
+    def _save_to_disk(self):
+        """Persist the current session state back to seed_data.json for persistence across reboots."""
+        try:
+            # Prepare data (convert datetime objects back to ISO strings)
+            export_data = {}
+            for col_name, docs in st.session_state.db_storage.items():
+                processed_docs = []
+                for doc in docs:
+                    new_doc = doc.copy()
+                    for k, v in new_doc.items():
+                        if isinstance(v, datetime):
+                            new_doc[k] = v.isoformat()
+                    processed_docs.append(new_doc)
+                export_data[col_name] = processed_docs
+                
+            with open(self.seed_path, "w") as f:
+                json.dump(export_data, f, indent=4)
+        except Exception as e:
+            print(f"FAILED TO PERSIST: {e}")
+
     def _load_seed_data(self):
-        """Pre-populate the collection from data/seed_data.json on first run."""
-        seed_path = os.path.join(os.path.dirname(__file__), "..", "..", "data", "seed_data.json")
-        if os.path.exists(seed_path):
+        """Pre-populate the collection from data/seed_data.json."""
+        if os.path.exists(self.seed_path):
             try:
-                with open(seed_path, "r") as f:
+                with open(self.seed_path, "r") as f:
                     all_seed_data = json.load(f)
                 
                 if self.collection_name in all_seed_data:
                     raw_docs = all_seed_data[self.collection_name]
                     processed_docs = []
                     for doc in raw_docs:
-                        # Convert ISO dates to datetime
                         for k, v in doc.items():
-                            if isinstance(v, str) and (k.endswith("_at") or k.endswith("_date") or k == "timestamp"):
+                            if isinstance(v, str) and (k.endswith("_at") or k.endswith("_date") or k == "timestamp" or k == "completed_at"):
                                 try:
                                     doc[k] = parser.parse(v)
                                 except: pass
@@ -59,6 +79,7 @@ class BaseRepository:
             document["created_at"] = datetime.now()
         
         st.session_state.db_storage[self.collection_name].append(document)
+        self._save_to_disk()
         return str(document["_id"])
 
     def find_one(self, query: Dict[str, Any]) -> Optional[Dict]:
@@ -121,6 +142,9 @@ class BaseRepository:
         for doc in target_docs:
             doc.update(data_to_set)
             modified = True
+            
+        if modified:
+            self._save_to_disk()
             
         if not modified and upsert:
             self.create(query | data_to_set)
