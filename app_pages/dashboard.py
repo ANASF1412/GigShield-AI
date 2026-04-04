@@ -79,39 +79,14 @@ def show():
 
     with col2:
         st.markdown("**Current Risk Score**")
-        try:
-            premium_result = premium_calc.calculate_premium(rainfall, temperature, aqi)
+        premium_result = premium_calc.calculate_premium(rainfall, temperature, aqi)
 
-            if premium_result["success"]:
-                risk_score = premium_result["risk_score"] * 100  # Convert to 0-100
-                render_risk_gauge(risk_score)
-                st.markdown(f"**Premium Recommendation:** ₹{premium_result['weekly_premium']}/week")
-                
-                # ONE-LOOK UNDERSTANDING LAYER
-                st.markdown(f"""
-                <div style='background-color:#1e1e1e; padding:10px; border-radius:5px; text-align:center;'>
-                <strong>💡 Quick Trace:</strong> Environment ➝ Risk ({risk_score:.0f}%) ➝ Premium (₹{premium_result['weekly_premium']})
-                </div>
-                """, unsafe_allow_html=True)
-                
-                # AI Explainability (HACKATHON REQUIREMENT)
-                with st.expander("🧠 AI Reasoning & Explainability", expanded=True):
-                    st.markdown(f"**Confidence Score:** {premium_result.get('confidence', 0) * 100:.1f}%")
-                    st.markdown(f"**Reasoning:** {premium_result.get('ai_recommendation', 'N/A')}")
-                    st.markdown("**Top 3 Risk Drivers:**")
-                    factors = premium_result.get('contributing_factors', [])
-                    for f in factors[:3]:
-                        st.markdown(f"- {f}")
-                    st.markdown("**Feature Influence:**")
-                    impacts = premium_result.get('factor_impacts', {})
-                    for feature, impact in impacts.items():
-                        st.markdown(f"- {feature}: *{impact}*")
-            else:
-                st.error("Failed to calculate risk")
-                
-        except Exception as e:
-            st.error("⚠️ AI temporarily unavailable. Running on baseline fallback.")
-            st.markdown("**Premium Recommendation:** ₹100/week (Fallback)")
+        if premium_result["success"]:
+            risk_score = premium_result["risk_score"] * 100  # Convert to 0-100
+            render_risk_gauge(risk_score)
+            st.markdown(f"**Premium Recommendation:** ₹{premium_result['weekly_premium']}/week")
+        else:
+            st.error("Failed to calculate risk")
 
     st.divider()
 
@@ -127,33 +102,35 @@ def show():
         if event_result["event_detected"]:
             render_event_triggers(event_result["trigger_conditions"])
 
-            # Zero-Touch Automation (No Manual Intervention)
-            st.info("⚡ Zero-Touch Pipeline Activated: Automatically processing claims...")
-            with st.spinner("Processing claims..."):
-                automation_result = automation_engine.trigger_claims_for_event(
-                    rainfall, temperature, aqi
-                )
+            # Trigger automation for this policy
+            if st.button("🔄 Process Claims for Active Policies", use_container_width=True):
+                with st.spinner("Processing claims..."):
+                    automation_result = automation_engine.trigger_claims_for_event(
+                        rainfall, temperature, aqi
+                    )
 
-                if automation_result["success"]:
-                    st.success(automation_result["message"])
-                    st.write(f"**Policies Processed:** {automation_result['policies_processed']}")
-                    st.write(f"**Claims Created:** {automation_result['claims_created']}")
-                    st.write(f"**Payouts Processed:** {automation_result['payouts_processed']}")
+                    if automation_result["success"]:
+                        st.success(automation_result["message"])
+                        st.write(f"**Policies Processed:** {automation_result['policies_processed']}")
+                        st.write(f"**Claims Created:** {automation_result['claims_created']}")
+                        st.write(f"**Payouts Processed:** {automation_result['payouts_processed']}")
 
-                    # One Look Claim Journey Summary
-                    st.success(f"**🎯 Action Track:** Environment Signal ➝ Risk Evaluated ➝ Premium Adjusted ➝ {automation_result['claims_created']} Claim(s) Auto-Triggered ✔")
-                    
-                    # Show results
-                    if automation_result["results"]:
-                        st.markdown("**📋 Claim Processing Trace:**")
-                        for r in automation_result["results"][:10]:
-                            msg = r.get("message", "").replace("\n", "\n\n")
-                            if r["claim_created"]:
-                                st.info(f"**Policy {r['policy_id'][:8]}** ➝ {msg}")
-                            else:
-                                st.warning(f"**Policy {r['policy_id'][:8]}** ➝ Ignored (No impact/Flagged)")
-                else:
-                    st.error(f"Automation failed: {automation_result['error']}")
+                        # Show results
+                        if automation_result["results"]:
+                            st.markdown("**Claim Processing Results:**")
+                            results_df = pd.DataFrame([
+                                {
+                                    "Policy": r["policy_id"][:10],
+                                    "Worker": r["worker_id"],
+                                    "Claim Created": "✅" if r["claim_created"] else "❌",
+                                    "Status": r.get("claim_status", "N/A"),
+                                    "Message": r.get("message", ""),
+                                }
+                                for r in automation_result["results"][:10]
+                            ])
+                            st.dataframe(results_df, use_container_width=True, hide_index=True)
+                    else:
+                        st.error(f"Automation failed: {automation_result['error']}")
         else:
             st.info("✅ No disruption events detected. Conditions are safe.")
 

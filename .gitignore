@@ -1,0 +1,12 @@
+
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+.streamlit/
+.vscode/
+data/*.db
+models/*.pkl
+

@@ -8,15 +8,14 @@ from config.settings import (
     TEMPERATURE_THRESHOLD_C,
     AQI_THRESHOLD,
 )
-from services.model_loader import ModelLoader
+
 
 class EventDetector:
-    """Detect disruption events using probabilistic parametric triggers."""
+    """Detect disruption events using parametric triggers."""
 
     def __init__(self):
-        """Initialize event detector with ML pipeline."""
+        """Initialize event detector."""
         self.triggers_history = []
-        self.model_loader = ModelLoader()
 
     def detect_event(self, rainfall_mm: float, temperature: float,
                     aqi: float, alert_texts: List[str] = None) -> Dict[str, Any]:
@@ -43,38 +42,20 @@ class EventDetector:
         triggers = []
         event_types = []
 
-        # ===== PROBABILISTIC ACTIVATION MODEL =====
-        # Calculate risk mathematically using the true ML pipeline natively mapping environmental limits
-        try:
-            risk_payload = self.model_loader.predict_risk({
-                "Temperature": temperature,
-                "Rainfall_mm": rainfall_mm,
-                "Humidity": 60.0, # default
-                "Wind_Speed": 10.0, # default
-                "Severity": self._calculate_severity(rainfall_mm, temperature, aqi) == "Critical"
-            })
-            prob = risk_payload.get("risk_score", 0.0)
-        except:
-            prob = 0.0
+        # ===== RAINFALL CHECK =====
+        if rainfall_mm > RAINFALL_THRESHOLD_MM:
+            triggers.append(f"Rainfall > {RAINFALL_THRESHOLD_MM}mm ({rainfall_mm}mm detected)")
+            event_types.append("Heavy Rain")
 
-        # Base trigger on probability (e.g., > 45% = disruption likely)
-        if prob > 0.45:
-            # Reconstruct what was the likely cause for explainability
-            if rainfall_mm > RAINFALL_THRESHOLD_MM * 0.8: # smooth threshold tracking via probability driver
-                triggers.append(f"Rainfall likelihood trigger: f(Rain) → p={prob:.2f} ({rainfall_mm}mm detected)")
-                event_types.append("Heavy Rain")
-            
-            if temperature > TEMPERATURE_THRESHOLD_C * 0.95:
-                triggers.append(f"Heatwave predictive trigger: f(Temp) → p={prob:.2f} ({temperature}°C detected)")
-                event_types.append("Heatwave")
-                
-            if aqi > AQI_THRESHOLD * 0.8:
-                triggers.append(f"Pollution predictive trigger: f(AQI) → p={prob:.2f} ({aqi} detected)")
-                event_types.append("Severe Pollution")
+        # ===== TEMPERATURE CHECK =====
+        if temperature > TEMPERATURE_THRESHOLD_C:
+            triggers.append(f"Temperature > {TEMPERATURE_THRESHOLD_C}°C ({temperature}°C detected)")
+            event_types.append("Heatwave")
 
-            if not triggers: # fail-safe if prob drove high from combinatorics alone
-                triggers.append(f"Combined environmental hazard trigger: p={prob:.2f}")
-                event_types.append("Multi-factor Hazard")
+        # ===== AQI CHECK =====
+        if aqi > AQI_THRESHOLD:
+            triggers.append(f"AQI > {AQI_THRESHOLD} ({aqi} detected)")
+            event_types.append("Severe Pollution")
 
         # ===== TEXT-BASED ALERT CHECK =====
         if alert_texts:

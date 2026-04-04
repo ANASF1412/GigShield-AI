@@ -173,11 +173,12 @@ class DashboardService:
         """Format claim for display."""
         return {
             "claim_id": claim["claim_id"],
+            "claim_status": claim["claim_status"],
             "status": claim["claim_status"],
             "event_type": claim.get("event_type"),
-            "loss": claim.get("estimated_loss", 0),
-            "created_at": claim["created_at"].isoformat() if hasattr(claim["created_at"],
- 'isoformat') else str(claim["created_at"]),
+            "estimated_loss": claim.get("estimated_loss", 0),
+            "approved_payout": claim.get("approved_payout", 0),
+            "created_at": claim["created_at"].isoformat() if hasattr(claim["created_at"], 'isoformat') else str(claim["created_at"]),
         }
 
     def _format_payout(self, payout: Dict) -> Dict:

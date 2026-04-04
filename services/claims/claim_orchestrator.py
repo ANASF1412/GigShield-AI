@@ -198,14 +198,6 @@ class ClaimOrchestrator:
             # All data already persisted in databases, just summarize here
             claim = self.claim_repo.get_claim(claim_id)
 
-            # JUSTIFICATION TRACE ENHANCEMENT
-            trace = f"{self._generate_final_message(claim_status, estimated_loss, payout_id)}\n"
-            trace += "Reason Breakdown:\n"
-            if event_result["trigger_conditions"]:
-                for cond in event_result["trigger_conditions"]:
-                    trace += f"- {cond}\n"
-            trace += f"- Confidence Validated: {loss_result.get('confidence', 0.91)*100:.1f}%\n"
-
             result.update({
                 "success": True,
                 "claim_id": claim_id,
@@ -213,7 +205,7 @@ class ClaimOrchestrator:
                 "estimated_loss": estimated_loss,
                 "approved_payout": claim.get("approved_payout", 0.0) if claim else 0.0,
                 "payout_id": payout_id,
-                "message": trace,
+                "message": self._generate_final_message(claim_status, estimated_loss, payout_id),
                 "summary": {
                     "eligibility": is_eligible,
                     "fraud_score": fraud_score,

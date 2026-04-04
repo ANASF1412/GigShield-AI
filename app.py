@@ -1,6 +1,11 @@
 """
-GigShield AI - Main Streamlit Application Entry Point
+GigShield AI — Main Streamlit Application Entry Point
 Production-Grade Parametric Income Protection System
+
+Changes vs original:
+  - Added 💬 AI Assistant page (chatbot)
+  - Added model validation at startup with user-visible status
+  - ModelLoader.validate_models() called once on boot
 """
 import streamlit as st
 st.set_page_config(
@@ -11,22 +16,36 @@ st.set_page_config(
 )
 import sys
 import os
+import logging
 
-# Add project root to path
+logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(name)s | %(message)s")
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from ui.theme import apply_custom_theme
 from config.database import verify_db_connection, init_collections
 
-# Apply custom theme immediately
 apply_custom_theme()
 
-# Page configuration
+
+def _run_startup_checks():
+    """Run model validation once per session."""
+    if st.session_state.get("_startup_done"):
+        return
+
+    from services.model_loader import ModelLoader
+    ok = ModelLoader.validate_models()
+    if not ok:
+        st.sidebar.warning("⚠️ ML models may be degraded — using fallbacks")
+    else:
+        st.sidebar.success("✅ ML models healthy")
+
+    st.session_state["_startup_done"] = True
 
 
 def main():
     """Main app entry point."""
-    # Initialize database
+    # Database
     try:
         if verify_db_connection():
             init_collections()
@@ -34,19 +53,30 @@ def main():
         st.error(f"⚠️ Database connection: {str(e)}")
         st.info("The app will use in-memory data if MongoDB is unavailable.")
 
+    # ML startup validation
+    _run_startup_checks()
+
     # Sidebar navigation
     st.sidebar.title("🛡️ GigShield AI")
     st.sidebar.markdown("---")
 
     page = st.sidebar.radio(
         "Navigate",
-        ["📊 Dashboard", "👤 Registration", "📋 Policies", "📝 Claims", "📈 Analytics", "⚙️ Admin"]
+        [
+            "📊 Dashboard",
+            "👤 Registration",
+            "📋 Policies",
+            "📝 Claims",
+            "📈 Analytics",
+            "⚙️ Admin",
+            "💬 AI Assistant",
+        ]
     )
 
     st.sidebar.markdown("---")
     st.sidebar.markdown("""
     ### About
-    **GigShield AI** - Parametric Income Protection for Gig Workers
+    **GigShield AI** — Parametric Income Protection for Gig Workers
 
     Automatic insurance claims powered by AI and environmental triggers.
 
@@ -71,6 +101,9 @@ def main():
         show()
     elif page == "⚙️ Admin":
         from app_pages.admin import show
+        show()
+    elif page == "💬 AI Assistant":
+        from app_pages.chatbot import show
         show()
 
 
