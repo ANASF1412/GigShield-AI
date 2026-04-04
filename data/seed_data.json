@@ -169,6 +169,21 @@
             "created_at": "2026-04-04T15:51:50.042069",
             "updated_at": "2026-04-04T15:51:50.042069",
             "_id": "46a3f561-a1aa-43f8-96e5-a201b9cc071c"
+        },
+        {
+            "worker_id": "W013",
+            "name": "abcde",
+            "city": "Chennai",
+            "delivery_zone": "North",
+            "avg_hourly_income": 350.0,
+            "kyc_status": "Verified",
+            "rating": 4.5,
+            "total_deliveries": 0,
+            "total_earnings": 0.0,
+            "total_payouts": 0.0,
+            "created_at": "2026-04-04T16:44:24.343367",
+            "updated_at": "2026-04-04T16:44:24.343367",
+            "_id": "a3e17657-30b3-4392-8115-e9b75824b3ac"
         }
     ],
     "policies": [
@@ -329,6 +344,18 @@
             "created_at": "2026-04-04T15:51:50.045140",
             "updated_at": "2026-04-04T15:51:50.045140",
             "_id": "87d11604-b1e7-4e46-8aec-76378abc4233"
+        },
+        {
+            "policy_id": "P2b18084e",
+            "worker_id": "W013",
+            "weekly_premium": 30.0,
+            "coverage_limit": 14000.0,
+            "start_date": "2026-04-04T16:44:24.351390",
+            "end_date": "2026-04-11T16:44:24.351390",
+            "active_status": true,
+            "created_at": "2026-04-04T16:44:24.351390",
+            "updated_at": "2026-04-04T16:44:24.351390",
+            "_id": "50198ba8-4caf-4fcc-ba96-27f987e6ed11"
         }
     ],
     "claims": [

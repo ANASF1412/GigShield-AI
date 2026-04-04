@@ -283,4 +283,4 @@ def show():
             )
 
     st.divider()
-    st.markdown("---\n**GigShield AI** | Administration")
+    st.markdown("---\n**JARVIS EnviroSense Assurance** | Core Management")

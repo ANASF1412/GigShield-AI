@@ -55,4 +55,4 @@ def show():
         render_claims_table(status_claims)
 
     st.divider()
-    st.markdown("---\n**GigShield AI** | Claims Management")
+    st.markdown("---\n**JARVIS EnviroSense Assurance** | System Overview")

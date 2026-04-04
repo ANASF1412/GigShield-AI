@@ -100,4 +100,4 @@ def show():
         st.info("No policies found")
 
     st.divider()
-    st.markdown("---\n**GigShield AI** | Policy Management")
+    st.markdown("---\n**JARVIS EnviroSense Assurance** | Policy Management")

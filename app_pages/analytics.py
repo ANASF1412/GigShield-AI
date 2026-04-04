@@ -85,4 +85,4 @@ def show():
             st.dataframe(df, use_container_width=True, hide_index=True)
 
     st.divider()
-    st.markdown("---\n**GigShield AI** | Analytics Dashboard")
+    st.markdown("---\n**JARVIS EnviroSense Assurance** | Analytics")

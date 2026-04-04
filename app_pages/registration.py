@@ -11,7 +11,7 @@ from ui.components import render_result_message, render_kpi_cards
 def show():
     """Render registration page."""
     st.title("👤 Worker Registration")
-    st.markdown("Onboard new gig workers to GigShield AI insurance protection")
+    st.markdown("Onboard new gig workers to JARVIS EnviroSense Assurance protection")
 
     registration_svc = RegistrationService()
     worker_repo = WorkerRepository()
@@ -81,5 +81,5 @@ def show():
     # Footer
     st.markdown("""
     ---
-    **GigShield AI** | Worker Registration Portal
+    **JARVIS EnviroSense Assurance** | Zero-Touch Autonomous Protection
     """)
