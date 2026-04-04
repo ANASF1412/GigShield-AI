@@ -15,14 +15,8 @@ class WorkerRepository(BaseRepository):
         super().__init__("workers")
 
     def generate_worker_id(self) -> str:
-        """
-        Generate unique worker ID.
-
-        Returns:
-            Unique worker_id in format W{XXX}
-        """
-        # Get count and generate ID
-        count = self.collection.count_documents({})
+        """Generate unique worker ID in memory."""
+        count = self.count()
         return f"W{count + 1:03d}"
 
     def create_worker(self, name: str, city: str, delivery_zone: str,
@@ -122,45 +116,27 @@ class WorkerRepository(BaseRepository):
         return self.update_by_id(worker_id, kwargs, id_field="worker_id")
 
     def update_earnings(self, worker_id: str, earnings_amount: float) -> bool:
-        """
-        Update worker total earnings and delivery count.
-
-        Args:
-            worker_id: Worker ID
-            earnings_amount: Amount earned
-
-        Returns:
-            True if successful
-        """
-        return self.collection.update_one(
-            {"worker_id": worker_id},
-            {
-                "$inc": {
-                    "total_earnings": earnings_amount,
-                    "total_deliveries": 1
-                },
-                "$set": {"updated_at": datetime.now()}
-            }
-        ).modified_count > 0
+        """Update worker total earnings and delivery count (In Memory)."""
+        worker = self.get_worker(worker_id)
+        if not worker: return False
+        
+        worker["total_earnings"] = float(worker.get("total_earnings", 0)) + earnings_amount
+        worker["total_deliveries"] = int(worker.get("total_deliveries", 0)) + 1
+        worker["updated_at"] = datetime.now()
+        
+        self._save_to_disk()
+        return True
 
     def update_payouts(self, worker_id: str, payout_amount: float) -> bool:
-        """
-        Update worker total payouts.
-
-        Args:
-            worker_id: Worker ID
-            payout_amount: Payout amount
-
-        Returns:
-            True if successful
-        """
-        return self.collection.update_one(
-            {"worker_id": worker_id},
-            {
-                "$inc": {"total_payouts": payout_amount},
-                "$set": {"updated_at": datetime.now()}
-            }
-        ).modified_count > 0
+        """Update worker total payouts (In Memory)."""
+        worker = self.get_worker(worker_id)
+        if not worker: return False
+        
+        worker["total_payouts"] = float(worker.get("total_payouts", 0)) + payout_amount
+        worker["updated_at"] = datetime.now()
+        
+        self._save_to_disk()
+        return True
 
     def update_rating(self, worker_id: str, rating: float) -> bool:
         """
