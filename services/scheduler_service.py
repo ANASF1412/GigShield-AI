@@ -48,7 +48,8 @@ class MonitoringScheduler:
                 func=self._heartbeat_job,
                 trigger="interval",
                 seconds=60,
-                id="environmental_monitor_job"
+                id="environmental_monitor_job",
+                replace_existing=True
             )
             self.scheduler.start()
             self.is_running = True
