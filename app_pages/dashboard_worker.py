@@ -5,7 +5,7 @@ Transparency Layer: Economic Explainability and Personal Protection Metrics.
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from ui.theme import style_metric_card, badge, success_box, info_box
+from ui.theme import style_metric_card, badge, success_box, info_box, error_box, warning_box
 
 def show():
     if "user" not in st.session_state or "data" not in st.session_state:
