@@ -1,117 +1,180 @@
-"""
-Enterprise UI Theme System
-Professional design palette and styling for GigShield AI
-"""
 import streamlit as st
-from config.settings import COLORS
+import json
 
+def get_theme_palette(theme_mode="dark"):
+    if theme_mode == "dark":
+        return {
+            "background": "#0e1117",
+            "surface": "#1e2127",
+            "border": "#31353f",
+            "text_primary": "#f8f9fa",
+            "text_secondary": "#abb2bf",
+            "success": "#22c55e",
+            "warning": "#f59e0b",
+            "error": "#ef4444",
+            "accent": "#4f46e5"
+        }
+    else:
+        return {
+            "background": "#f8f9fa",
+            "surface": "#ffffff",
+            "border": "#e5e7eb",
+            "text_primary": "#111827",
+            "text_secondary": "#6b7280",
+            "success": "#16a34a",
+            "warning": "#d97706",
+            "error": "#dc2626",
+            "accent": "#4338ca"
+        }
 
-def apply_custom_theme():
-    """Apply custom enterprise theme to Streamlit app."""
-    
-    # Custom CSS for professional styling
+def inject_theme_css(theme_mode="dark"):
+    """Inject fully defined theme CSS based on light/dark mode."""
+    colors = get_theme_palette(theme_mode)
+
     st.markdown(f"""
     <style>
-        /* Primary Colors */
+        /* Base Streamlit App Level Variables (Trying to override generic elements) */
         :root {{
-            --primary: {COLORS['primary']};
-            --secondary: {COLORS['secondary']};
-            --accent: {COLORS['accent']};
-            --success: {COLORS['success']};
-            --warning: {COLORS['warning']};
-            --error: {COLORS['error']};
-            --background: {COLORS['background']};
-            --surface: {COLORS['surface']};
-            --text-primary: {COLORS['text_primary']};
-            --text-secondary: {COLORS['text_secondary']};
+            --primary: {colors['accent']};
+            --background: {colors['background']};
+            --surface: {colors['surface']};
+            --border: {colors['border']};
+            --text-primary: {colors['text_primary']};
+            --text-secondary: {colors['text_secondary']};
+            --success: {colors['success']};
+            --warning: {colors['warning']};
+            --danger: {colors['error']};
+        }}
+        
+        /* App Containers */
+        .stApp, .main {{
+            background-color: var(--background) !important;
+            color: var(--text-primary) !important;
+        }}
+        
+        /* Sidebar styling to match theme */
+        [data-testid="stSidebar"] {{
+            background-color: var(--surface) !important;
+            border-right: 1px solid var(--border) !important;
         }}
 
-        /* Main App Styling */
-        .main {{
-            background-color: {COLORS['background']};
-            color: {COLORS['text_primary']};
+        /* Typography overrides */
+        h1, h2, h3, h4, h5, p, span, div {{
+            color: var(--text-primary);
         }}
-
-        /* Headers */
-        h1 {{
-            color: {COLORS['primary']};
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid {COLORS['accent']};
-            padding-bottom: 0.5rem;
+        
+        .stMarkdown p, .stMarkdown span {{
+            color: var(--text-primary) !important;
         }}
-
-        h2 {{
-            color: {COLORS['primary']};
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }}
-
-        h3 {{
-            color: {COLORS['secondary']};
-            font-weight: 600;
-            margin-top: 1rem;
-        }}
-
-        /* Cards & Containers */
-        .card {{
-            background-color: {COLORS['surface']};
+        
+        /* Fixed Metric Cards */
+        .theme-card {{
+            background-color: var(--surface);
             border-radius: 12px;
             padding: 1.5rem;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }}
-
-        /* Sidebar */
-        .css-1lcbmhc {{
-            background-color: {COLORS['surface']};
-        }}
-
-        /* Buttons */
-        .stButton > button {{
-            background-color: {COLORS['primary']};
-            color: white;
-            border-radius: 8px;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-        }}
-
-        .stButton > button:hover {{
-            background-color: {COLORS['secondary']};
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }}
-
-        /* Input Fields */
-        .stTextInput, .stNumberInput, .stSelectbox, .stSlider {{
-            border-radius: 8px;
-        }}
-
-        /* Metrics Display */
-        .metric-container {{
-            background: linear-gradient(135deg, {COLORS['primary']} 0%, {COLORS['secondary']} 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 1rem;
-        }}
-
-        .metric-value {{
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 0.5rem 0;
-        }}
-
-        .metric-label {{
-            font-size: 0.9rem;
-            opacity: 0.9;
+        
+        .theme-card-label {{
+            font-size: 0.85rem;
             text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-secondary);
             letter-spacing: 0.5px;
+        }}
+        
+        .theme-card-value {{
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }}
+        
+        .theme-card-subtext {{
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }}
+
+        /* Buttons & UI Controls */
+        div.stButton > button {{
+            background-color: var(--surface) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border) !important;
+            transition: all 0.2s ease;
+        }}
+        
+        div.stButton > button:hover {{
+            border-color: var(--primary) !important;
+            color: var(--primary) !important;
+        }}
+        
+        div.stButton > button[data-testid="baseButton-primary"] {{
+            background-color: var(--primary) !important;
+            color: white !important;
+            border: none !important;
+        }}
+        
+        /* Old Card Backward compatibility */
+        .card {{
+            background-color: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+        }}
+        .metric-label {{ font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; }}
+        .metric-value {{ font-size: 2rem; font-weight: bold; color: var(--text-primary); }}
+
+        /* Extracted explicit styles from Streamlit components to fix standard white boxes */
+        [data-testid="stMetricValue"], [data-testid="stMetricLabel"] {{
+            color: var(--text-primary) !important;
+        }}
+        [data-testid="stMetric"] {{
+            background-color: var(--surface) !important;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+        }}
+        
+        /* Force Input Backgrounds and Text Colors */
+        div[data-baseweb="select"] > div,
+        div[data-baseweb="input"] > input,
+        div[data-baseweb="textarea"] > textarea,
+        div[data-testid="stChatInput"] textarea {{
+            background-color: var(--background) !important;
+            color: var(--text-primary) !important;
+            border-color: var(--border) !important;
+        }}
+        
+        div[data-baseweb="select"] ul {{
+            background-color: var(--surface) !important;
+            color: var(--text-primary) !important;
+        }}
+        
+        div[data-baseweb="select"] li {{
+            color: var(--text-primary) !important;
+            background-color: var(--surface) !important;
+        }}
+
+        /* Streamlit expander and messages */
+        details[data-testid="stExpanderDetails"], details[data-testid="stExpanderDetails"] summary {{
+            background-color: var(--surface) !important;
+            color: var(--text-primary) !important;
+        }}
+        
+        div[data-testid="stChatMessage"] {{
+            background-color: var(--surface) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 10px;
         }}
 
         /* Status Badges */
@@ -122,189 +185,63 @@ def apply_custom_theme():
             font-size: 0.85rem;
             font-weight: 600;
             margin: 0.25rem;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
         }}
+        .badge-success {{ color: var(--success); border-color: var(--success); }}
+        .badge-warning {{ color: var(--warning); border-color: var(--warning); }}
+        .badge-error {{ color: var(--danger); border-color: var(--danger); }}
+        .badge-info {{ color: var(--primary); border-color: var(--primary); }}
 
-        .badge-success {{
-            background-color: #d1fae5;
-            color: #065f46;
-        }}
-
-        .badge-warning {{
-            background-color: #fef3c7;
-            color: #92400e;
-        }}
-
-        .badge-error {{
-            background-color: #fee2e2;
-            color: #741c21;
-        }}
-
-        .badge-info {{
-            background-color: #dbeafe;
-            color: #1e40af;
-        }}
-
-        /* Tables */
-        table {{
-            border-collapse: collapse;
-            width: 100%;
-            font-size: 0.9rem;
-        }}
-
-        thead {{
-            background-color: {COLORS['primary']};
-            color: white;
-        }}
-
-        tbody tr {{
-            border-bottom: 1px solid #e5e7eb;
-        }}
-
-        tbody tr:hover {{
-            background-color: {COLORS['background']};
-        }}
-
-        td, th {{
-            padding: 0.75rem;
-            text-align: left;
-        }}
-
-        /* Alert Boxes */
+        /* Alerts */
         .alert {{
             padding: 1rem;
             border-radius: 8px;
             margin-bottom: 1rem;
             border-left: 4px solid;
+            background-color: var(--surface);
+            color: var(--text-primary);
         }}
-
-        .alert-success {{
-            background-color: #f0fdf4;
-            border-left-color: {COLORS['success']};
-            color: #166534;
-        }}
-
-        .alert-warning {{
-            background-color: #fffbeb;
-            border-left-color: {COLORS['warning']};
-            color: #78350f;
-        }}
-
-        .alert-error {{
-            background-color: #fef2f2;
-            border-left-color: {COLORS['error']};
-            color: #7f1d1d;
-        }}
-
-        .alert-info {{
-            background-color: #f0f9ff;
-            border-left-color: {COLORS['accent']};
-            color: #0c2d48;
-        }}
-
-        /* Dividers */
-        hr {{
-            border: none;
-            border-top: 2px solid {COLORS['accent']};
-            margin: 2rem 0;
-            opacity: 0.3;
-        }}
-
-        /* Footer */
-        .footer {{
-            text-align: center;
-            color: {COLORS['text_secondary']};
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e5e7eb;
-            font-size: 0.85rem;
-        }}
+        .alert-success {{ border-left-color: var(--success); }}
+        .alert-warning {{ border-left-color: var(--warning); }}
+        .alert-error {{ border-left-color: var(--danger); }}
+        .alert-info {{ border-left-color: var(--primary); }}
+        
+        hr {{ border-top: 1px solid var(--border); opacity: 0.5; }}
     </style>
     """, unsafe_allow_html=True)
 
 
-def get_color(color_name: str) -> str:
-    """
-    Get color by name.
-
-    Args:
-        color_name: Color name
-
-    Returns:
-        HEX color code
-    """
-    return COLORS.get(color_name, COLORS['primary'])
-
-
-def style_metric_card(label: str, value: str, delta: str = None,
-                      help_text: str = None) -> None:
-    """
-    Display a styled metric card.
-
-    Args:
-        label: Metric label
-        value: Metric value
-        delta: Optional change indicator
-        help_text: Optional tooltip text
-    """
-    with st.container():
-        col1, col2 = st.columns([3, 1]) if help_text else (st.columns([1]), None)
-
-        st.markdown(f"""
-        <div class="card">
-            <div class="metric-label">{label}</div>
-            <div class="metric-value">{value}</div>
-            {f'<div style="font-size: 0.85rem; color: {COLORS["text_secondary"]};">{delta}</div>' if delta else ''}
-        </div>
-        """, unsafe_allow_html=True)
-
+def style_metric_card(label: str, value: str, delta: str = None, help_text: str = None, text_color: str = None) -> None:
+    """Enhanced customizable metric card integrating seamlessly with Light/Dark Mode."""
+    c_color = f"color: {text_color};" if text_color else ""
+    st.markdown(f"""
+<div class="theme-card">
+    <div class="theme-card-label">{label}</div>
+    <div class="theme-card-value" style="{c_color}">{value}</div>
+    {f'<div class="theme-card-subtext">{delta}</div>' if delta else ''}
+    {f'<div class="theme-card-subtext" style="opacity:0.8;">{help_text}</div>' if help_text else ''}
+</div>
+""", unsafe_allow_html=True)
 
 def success_box(title: str, message: str) -> None:
-    """Display success alert box."""
-    st.markdown(f"""
-    <div class="alert alert-success">
-        <strong>{title}</strong><br>
-        {message}
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown(f'<div class="alert alert-success"><strong>{title}</strong><br>{message}</div>', unsafe_allow_html=True)
 
 def warning_box(title: str, message: str) -> None:
-    """Display warning alert box."""
-    st.markdown(f"""
-    <div class="alert alert-warning">
-        <strong>⚠️ {title}</strong><br>
-        {message}
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown(f'<div class="alert alert-warning"><strong>⚠️ {title}</strong><br>{message}</div>', unsafe_allow_html=True)
 
 def error_box(title: str, message: str) -> None:
-    """Display error alert box."""
-    st.markdown(f"""
-    <div class="alert alert-error">
-        <strong>❌ {title}</strong><br>
-        {message}
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown(f'<div class="alert alert-error"><strong>❌ {title}</strong><br>{message}</div>', unsafe_allow_html=True)
 
 def info_box(title: str, message: str) -> None:
-    """Display info alert box."""
-    st.markdown(f"""
-    <div class="alert alert-info">
-        <strong>ℹ️ {title}</strong><br>
-        {message}
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown(f'<div class="alert alert-info"><strong>ℹ️ {title}</strong><br>{message}</div>', unsafe_allow_html=True)
 
 def badge(text: str, badge_type: str = "info") -> None:
-    """
-    Display a styled badge.
+    st.markdown(f'<span class="badge badge-{badge_type}">{text}</span>', unsafe_allow_html=True)
 
-    Args:
-        text: Badge text
-        badge_type: Type of badge (success, warning, error, info)
-    """
-    st.markdown(f'<span class="badge badge-{badge_type}">{text}</span>',
-                unsafe_allow_html=True)
+def apply_custom_theme():
+    # Backward compatibility wrap
+    if "theme_mode" not in st.session_state:
+        st.session_state["theme_mode"] = "dark"
+    inject_theme_css(st.session_state["theme_mode"])

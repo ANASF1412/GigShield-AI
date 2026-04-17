@@ -114,10 +114,35 @@ class PolicyService:
             Renewal response
         """
         try:
+            # --- NCB RENEWAL LOGIC: Check claims on policy before renewing ---
+            from services.repositories.claim_repository import ClaimRepository
+            from services.ncb_service import NCBService
+            claim_repo = ClaimRepository()
+            
+            policy = self.policy_repo.get_policy(policy_id)
+            if not policy:
+                return {"success": False, "error": "Policy not found", "policy_id": None}
+                
+            worker_id = policy.get("worker_id")
+            
+            # Check if there were any PAID claims for this policy 
+            claims = claim_repo.find_many({"worker_id": worker_id, "claim_status": {"$in": ["Paid", "Settled"]}})
+            
+            # Count claims strictly mapped to the coverage period (simplified proxy for demo)
+            claims_in_cycle = len([c for c in claims if policy["start_date"] <= c["created_at"] <= policy["end_date"]])
+            
             success = self.policy_repo.renew_policy(policy_id, duration_days)
 
             if success:
                 policy = self.policy_repo.get_policy(policy_id)
+                
+                # Apply the NCB Increment if completely clean cycle
+                if claims_in_cycle == 0 and worker_id:
+                    worker = self.worker_repo.get_worker(worker_id)
+                    current_streak = worker.get("ncb_streak", 0)
+                    new_rate = NCBService.get_discount_rate(current_streak + 1)
+                    self.worker_repo.increment_ncb_streak(worker_id, new_rate)
+                    
                 return {
                     "success": True,
                     "message": f"✅ Policy renewed until {policy['end_date']}",

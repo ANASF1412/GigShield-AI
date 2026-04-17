@@ -25,7 +25,7 @@ class PolicyRepository(BaseRepository):
         return f"P{str(uuid.uuid4())[:8]}"
 
     def create_policy(self, worker_id: str, weekly_premium: float,
-                     coverage_limit: float, duration_days: int = 7) -> Dict[str, Any]:
+                     coverage_limit: float, duration_days: int = 7, payment_ref: str = None) -> Dict[str, Any]:
         """
         Create new insurance policy.
 
@@ -50,6 +50,10 @@ class PolicyRepository(BaseRepository):
             "start_date": now,
             "end_date": end_date,
             "active_status": True,
+            "payment_ref": payment_ref or f"MOCK_{policy_id}",
+            "payment_status": "SUCCESS" if payment_ref else "PENDING",
+            "premium_paid": weekly_premium if payment_ref else 0.0,
+            "renewal_count": 0,
             "created_at": now,
             "updated_at": now,
         }
@@ -176,7 +180,8 @@ class PolicyRepository(BaseRepository):
             return False
 
         new_end_date = policy["end_date"] + timedelta(days=duration_days)
-        return self.update_policy(policy_id, end_date=new_end_date)
+        new_renewal_count = policy.get("renewal_count", 0) + 1
+        return self.update_policy(policy_id, end_date=new_end_date, renewal_count=new_renewal_count, payment_status="SUCCESS")
 
     def disable_expired_policies(self) -> int:
         """

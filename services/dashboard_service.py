@@ -57,7 +57,7 @@ class DashboardService:
                 "created_at": {"$gte": week_ago}
             })
             paid_claims = self.claim_repo.count({
-                "claim_status": "Paid",
+                "status": "Paid",
                 "created_at": {"$gte": week_ago}
             })
             success_rate = (paid_claims / total_claims_week * 100) if total_claims_week > 0 else 0
@@ -136,6 +136,36 @@ class DashboardService:
             claim_stats = self.claim_repo.get_claim_stats(worker_id)
             payout_stats = self.payout_repo.get_payout_stats(worker_id=worker_id)
 
+            latest_policy = None
+            all_pols = self.policy_repo.get_worker_policies(worker_id)
+            if all_pols: latest_policy = all_pols[0]
+
+            active_policy_obj = None
+            if active_policy:
+                active_policy_obj = {
+                    "policy_id": active_policy["policy_id"],
+                    "weekly_premium": active_policy["weekly_premium"],
+                    "coverage_limit": active_policy["coverage_limit"],
+                    "active": True,
+                    "start_date": active_policy["start_date"].isoformat(),
+                    "end_date": active_policy["end_date"].isoformat(),
+                    "payment_ref": active_policy.get("payment_ref", ""),
+                    "payment_status": active_policy.get("payment_status", ""),
+                }
+            
+            latest_policy_obj = None
+            if latest_policy:
+                latest_policy_obj = {
+                    "policy_id": latest_policy["policy_id"],
+                    "weekly_premium": latest_policy["weekly_premium"],
+                    "coverage_limit": latest_policy["coverage_limit"],
+                    "active": latest_policy.get("active_status", False) and latest_policy["start_date"] <= datetime.now() <= latest_policy["end_date"],
+                    "start_date": latest_policy["start_date"].isoformat(),
+                    "end_date": latest_policy["end_date"].isoformat(),
+                    "payment_ref": latest_policy.get("payment_ref", ""),
+                    "payment_status": latest_policy.get("payment_status", ""),
+                }
+
             return {
                 "success": True,
                 "worker": {
@@ -145,13 +175,11 @@ class DashboardService:
                     "city": worker["city"],
                     "hourly_income": worker["avg_hourly_income"],
                     "rating": worker.get("rating", 4.5),
+                    "ncb_streak": worker.get("ncb_streak", 0),
+                    "ncb_discount_rate": worker.get("ncb_discount_rate", 0.0),
                 },
-                "active_policy": {
-                    "policy_id": active_policy["policy_id"] if active_policy else None,
-                    "weekly_premium": active_policy["weekly_premium"] if active_policy else None,
-                    "coverage_limit": active_policy["coverage_limit"] if active_policy else None,
-                    "active": active_policy is not None,
-                },
+                "active_policy": active_policy_obj,
+                "latest_policy": latest_policy_obj,
                 "statistics": {
                     "total_claims": claim_stats.get("total_claims", 0),
                     "paid_claims": claim_stats.get("approved_count", 0),
@@ -173,8 +201,8 @@ class DashboardService:
         """Format claim for display."""
         return {
             "claim_id": claim["claim_id"],
-            "claim_status": claim["claim_status"],
-            "status": claim["claim_status"],
+            "claim_status": claim.get('claim_status', claim.get('status', 'Unknown')),
+            "status": claim.get('claim_status', claim.get('status', 'Unknown')),
             "event_type": claim.get("event_type"),
             "estimated_loss": claim.get("estimated_loss", 0),
             "approved_payout": claim.get("approved_payout", 0),

@@ -46,6 +46,8 @@ class WorkerRepository(BaseRepository):
             "total_deliveries": 0,
             "total_earnings": 0.0,
             "total_payouts": 0.0,
+            "ncb_streak": 0,
+            "ncb_discount_rate": 0.0,
             "created_at": datetime.now(),
             "updated_at": datetime.now(),
         }
@@ -135,6 +137,27 @@ class WorkerRepository(BaseRepository):
         worker["total_payouts"] = float(worker.get("total_payouts", 0)) + payout_amount
         worker["updated_at"] = datetime.now()
         
+        self._save_to_disk()
+        return True
+
+    def reset_ncb_streak(self, worker_id: str) -> bool:
+        """Reset NCB streak to 0 upon payout."""
+        worker = self.get_worker(worker_id)
+        if not worker: return False
+        worker["ncb_streak"] = 0
+        worker["ncb_discount_rate"] = 0.0
+        worker["updated_at"] = datetime.now()
+        self._save_to_disk()
+        return True
+
+    def increment_ncb_streak(self, worker_id: str, new_rate: float) -> bool:
+        """Increment NCB streak on clean policy cycle."""
+        worker = self.get_worker(worker_id)
+        if not worker: return False
+        worker["ncb_streak"] = worker.get("ncb_streak", 0) + 1
+        worker["ncb_discount_rate"] = new_rate
+        worker["last_clean_cycle_date"] = datetime.now()
+        worker["updated_at"] = datetime.now()
         self._save_to_disk()
         return True
 

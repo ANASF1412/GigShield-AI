@@ -1,58 +1,108 @@
 """
-PAGE: Claims
-Claims history and management
+Claims Audit Ledger — JARVIS EnviroSense Assurance
+Guidewire-Grade Technical Audit: DNA Math Settlement traces and Hyperlocal Identity.
 """
 import streamlit as st
-import pandas as pd
 from services.repositories.claim_repository import ClaimRepository
-from services.repositories.worker_repository import WorkerRepository
-from ui.components import render_claims_table
-
+from ui.theme import style_metric_card, badge
 
 def show():
-    """Render claims page."""
-    st.title("📝 Claims Management")
-    st.markdown("View and manage insurance claims")
+    st.markdown("## 🗒️ Global Settlement Ledger")
+    st.caption("Immutable system-of-record with deterministic DNA math audit traces.")
 
     claim_repo = ClaimRepository()
-    worker_repo = WorkerRepository()
+    all_claims = claim_repo.find_many({}, limit=30, sort_field="created_at", sort_order=-1)
+    
+    if not all_claims:
+        st.info("No system activations recorded yet in the current cycle.")
+        return
 
-    # Tabs
-    tab1, tab2, tab3 = st.tabs(["All Claims", "By Worker", "By Status"])
+    col_list, col_trace = st.columns([1, 1.8])
 
-    with tab1:
-        st.subheader("📊 All Claims")
-        limit = st.slider("Show last N claims", 10, 100, 50)
-        all_claims = claim_repo.find_many({}, limit=limit, sort_field="created_at", sort_order=-1)
-        render_claims_table(all_claims)
+    with col_list:
+        st.markdown("### Events")
+        for c in all_claims:
+            with st.container(border=True):
+                icon = "💸" if c.get('status') in ["PAID", "SETTLED_AFTER_REVIEW"] else "🛡️"
+                res = "PAID" if c.get('status') in ["PAID", "SETTLED_AFTER_REVIEW"] else c.get('status', 'BLOCKED')
+                btn_label = f"{icon} {c['claim_id']} | {res}"
+                if st.button(btn_label, key=f"btn_{c['claim_id']}", use_container_width=True):
+                    st.session_state.audit_trace_id = c['claim_id']
 
-    with tab2:
-        st.subheader("👤 Claims by Worker")
-        workers = worker_repo.get_all_workers()
-        if workers:
-            worker_ids = [w["worker_id"] + " - " + w["name"] for w in workers]
-            selected = st.selectbox("Select worker", worker_ids)
-            worker_id = selected.split(" - ")[0]
-            worker_claims = claim_repo.find_many(
-                {"worker_id": worker_id},
-                limit=50,
-                sort_field="created_at",
-                sort_order=-1
-            )
-            render_claims_table(worker_claims)
+    with col_trace:
+        trace_id = st.session_state.get('audit_trace_id', all_claims[0]['claim_id'])
+        c = next((item for item in all_claims if item["claim_id"] == trace_id), None)
+        
+        if c:
+            st.markdown(f"### 🔍 Deep Trace Audit: `{c['claim_id']}`")
+            with st.container(border=True):
+                # Regional HUD
+                h1, h2, h3 = st.columns(3)
+                h1.write(f"**City:** {c.get('city', 'Chennai')}")
+                h2.write(f"**Zone:** {c.get('zone_id', 'South-Zone')}")
+                h3.metric("Decision Confidence", f"{c.get('decision_confidence', 0)}%")
+                
+                st.divider()
+
+                # 📌 XAI DECISION EXPLAINABILITY
+                st.markdown("**📌 Why this decision? (XAI Panel)**")
+                with st.container(border=True):
+                    st.write(f"✔ **Trigger:** {c.get('trigger_conditions', 'Disruption threshold met')}")
+                    risk_score = round((100 - c.get("loyalty_score", 0.92)*100)/100, 2)
+                    st.write(f"✔ **Risk Score:** {risk_score} (Zone: {c.get('zone_id', 'South-Zone')})")
+                    fraud_score = c.get('fraud_score', 0)
+                    if fraud_score > 60:
+                        st.markdown(f"⚠ **Fraud Score:** <span style='color:red;'>{fraud_score} (CRITICAL)</span>", unsafe_allow_html=True)
+                        st.markdown(f"⚠ **Fraud Reason:** {c.get('fraud_explanation', 'Anomalous pattern detected')}", unsafe_allow_html=True)
+                        st.write(f"→ **Decision:** {c.get('status', 'BLOCKED')}")
+                    else:
+                        st.write(f"✔ **Fraud Score:** {fraud_score} (Safe)")
+                        comp_tag = c.get('compliance', {}).get('decision', 'APPROVE') if isinstance(c.get('compliance'), dict) else 'Passed'
+                        st.write(f"✔ **Compliance:** {comp_tag}")
+                        st.write(f"→ **Decision:** {c.get('status', 'APPROVED')}")
+
+                st.divider()
+
+                # ⏱️ DECISION TIMELINE
+                st.markdown("**⏱️ System Decision Timeline**")
+                with st.container(border=True):
+                    if c.get('audit_trail'):
+                        for step in c['audit_trail']:
+                            ts_str = step.get('ts', str(c.get('created_at', '')))
+                            try:
+                                if 'T' in ts_str:
+                                    time_only = ts_str.split('T')[1][:8]
+                                else:
+                                    time_only = ts_str[11:19] if len(ts_str) > 15 else ts_str[:8]
+                            except:
+                                time_only = "00:00:00"
+                            st.markdown(f"`[{time_only}]` {step.get('narration', 'Processing signal...')}")
+                    else:
+                        st.caption("`[00:00:00]` Direct autonomous execution via sensor trigger.")
+                
+                st.divider()
+
+                # 🧮 DNA MATH
+                st.markdown("**🧮 Settlement DNA Math**")
+                if c.get('status') in ["FLAGGED", "BLOCKED", "REJECTED_COMPLIANCE", "REJECTED"]:
+                    st.error(f"🛡️ **INTEGRITY GUARD: Transaction {c.get('status')}**")
+                    st.write(f"**Reason:** {c.get('fraud_explanation', 'Anomalous behavior signature detected.')}")
+                elif c.get('status') == "REVIEW":
+                    st.warning("⚖️ **ROUTED TO MANUAL AUDIT (REVIEW)**")
+                    st.write(f"**Status Info:** {c.get('governance_status', 'Pending offline confirmation')}")
+                else:
+                    st.success(f"✅ **AUTO-DISBURSEMENT: {c.get('status')}**")
+                    st.code(c.get('payout_math', "Base \u00d7 Trust \u00d7 ECI \u00d7 Liquidity \u00d7 Zone"), language="text")
+                    
+                    m1, m2, m3 = st.columns(3)
+                    m1.metric("Final Payout", f"₹{c.get('payout_amount', c.get('amount', 0)):,}")
+                    m2.write(f"**Network Ref:** `{c.get('payout_ref', c.get('payout_id', 'N/A'))}`")
+                    m3.write(f"**Latency:** {c.get('processing_time_ms', 0)}ms")
+
+                if c.get('stress_response'):
+                    st.warning(f"💡 {c['stress_response']}")
+
         else:
-            st.info("No workers found")
+            st.info("Select a transaction from the ledger to view the technical DNA trace.")
 
-    with tab3:
-        st.subheader("📋 Claims by Status")
-        status = st.selectbox("Select status", ["Paid", "Approved", "Under Review", "Rejected", "Flagged"])
-        status_claims = claim_repo.find_many(
-            {"claim_status": status},
-            limit=50,
-            sort_field="created_at",
-            sort_order=-1
-        )
-        render_claims_table(status_claims)
-
-    st.divider()
-    st.markdown("---\n**JARVIS EnviroSense Assurance** | System Overview")
+    st.markdown("<br><br><div class='footer'>🛡️ JARVIS EnviroSense — Financial Orchestration Engine | Guidewire Hackathon Entry</div>", unsafe_allow_html=True)

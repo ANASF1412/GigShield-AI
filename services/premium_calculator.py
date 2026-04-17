@@ -1,54 +1,83 @@
 """
 MODULE 3: DYNAMIC PREMIUM CALCULATION
-Calculate weekly premium based on AI risk scoring.
-
-Fix vs original:
-  - Pass actual aqi/derived-severity into weather_data so risk score is context-sensitive
-  - AQI is now used by predict_risk (original passed it in dict but model_loader ignored it;
-    fixed model_loader now derives severity from aqi which feeds the model)
-  - No ML logic here — all predictions go through ModelLoader
+Calculate weekly premium based on AI risk scoring and Economic City Tier scaling.
 """
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from services.model_loader import ModelLoader
+from services.ncb_service import NCBService
+from services.repositories.worker_repository import WorkerRepository
 from config.settings import PREMIUM_LOW_RISK, PREMIUM_MID_RISK, PREMIUM_HIGH_RISK
-
+from config.city_tiers import get_city_tier_context
 
 class PremiumCalculator:
-    """Calculate insurance premiums based on ML risk assessment."""
+    """Calculate insurance premiums based on ML risk assessment and Advanced City Tiers."""
 
     def __init__(self):
         self.model_loader = ModelLoader()
+        self.worker_repo = WorkerRepository()
 
     def calculate_premium(self, rainfall_mm: float, temperature: float,
-                          aqi: float) -> Dict[str, Any]:
-        """Calculate recommended premium based on weather/environmental conditions."""
+                          aqi: float, city: str = "Chennai", worker_id: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Calculate premium based on environmental conditions and City Tier multiplier.
+        """
         try:
             weather_data = {
                 "rainfall_mm": rainfall_mm,
                 "temperature": temperature,
                 "aqi": aqi,
-                # severity + humidity + wind_speed derived inside ModelLoader
             }
 
-            risk_score = self.model_loader.predict_risk(weather_data)
+            base_risk_score = self.model_loader.predict_risk(weather_data)
+            
+            # --- CITY TIER ECONOMIC SCALING (Step 3 Integration) ---
+            city_ctx = get_city_tier_context(city)
+            city_tier = city_ctx["tier"]
+            risk_modifier = city_ctx["base_risk_modifier"]
+            premium_modifier = city_ctx["base_premium_modifier"]
+            
+            # Adjust final risk perception based on city tier risk modifier
+            risk_score = min(1.0, base_risk_score * risk_modifier)
 
             if risk_score < 0.3:
-                premium, risk_level = PREMIUM_LOW_RISK, "Low"
+                base_premium, risk_level = PREMIUM_LOW_RISK, "Low"
             elif risk_score < 0.7:
-                premium, risk_level = PREMIUM_MID_RISK, "Medium"
+                base_premium, risk_level = PREMIUM_MID_RISK, "Medium"
             else:
-                premium, risk_level = PREMIUM_HIGH_RISK, "High"
+                base_premium, risk_level = PREMIUM_HIGH_RISK, "High"
+
+            # Scale premium by explicit tier premium modifier
+            base_tier_premium = round(base_premium * premium_modifier, 2)
+            
+            # --- NCB INTEGRATION ---
+            streak = 0
+            if worker_id:
+                worker = self.worker_repo.get_worker(worker_id)
+                if worker: streak = worker.get("ncb_streak", 0)
+                
+            ncb_data = NCBService.calculate_final_premium(base_tier_premium, streak)
+            final_premium = ncb_data["final_premium"]
 
             return {
                 "success": True,
                 "risk_score": round(risk_score, 3),
                 "risk_level": risk_level,
-                "weekly_premium": premium,
-                "ai_recommendation": self._get_recommendation(risk_score, premium),
+                "city_tier": city_tier,
+                "tier_multiplier": premium_modifier,
+                "base_premium": base_tier_premium,
+                "weekly_premium": final_premium,
+                "ncb_discount_rate": ncb_data["ncb_discount_rate"],
+                "ncb_streak": ncb_data["ncb_streak"],
+                "savings_amount": ncb_data["savings_amount"],
+                "final_premium": final_premium,
+                "ncb_tier_label": ncb_data["ncb_tier_label"],
+                "ai_recommendation": self._get_recommendation(risk_score, final_premium, city_tier, city),
                 "breakdown": {
-                    "rainfall_factor":    self._rainfall_impact(rainfall_mm),
-                    "temperature_factor": self._temperature_impact(temperature),
-                    "aqi_factor":         self._aqi_impact(aqi),
+                    "rainfall_factor":    rainfall_mm,
+                    "temperature_factor": temperature,
+                    "aqi_factor":         aqi,
+                    "tier_adj_risk":      risk_modifier,
+                    "tier_adj_premium":   premium_modifier
                 },
             }
 
@@ -59,35 +88,13 @@ class PremiumCalculator:
                 "risk_score": 0.5,
                 "risk_level": "Medium",
                 "weekly_premium": PREMIUM_MID_RISK,
-                "ai_recommendation": "Unable to calculate — using default premium",
             }
 
-    def _get_recommendation(self, risk_score: float, premium: float) -> str:
+    def _get_recommendation(self, risk_score: float, premium: float, tier: str, city: str) -> str:
+        tier_msg = f"Premium adjusted because {city} is a {tier} city with elevated payout pressure."
         if risk_score < 0.3:
-            return f"✅ Low Risk — Recommended Premium: ₹{premium}/week. Weather conditions are stable."
+            return f"✅ Low Risk — Recommended: ₹{premium}/week. {tier_msg}"
         elif risk_score < 0.7:
-            return f"⚠️ Medium Risk — Recommended Premium: ₹{premium}/week. Moderate disruption possible."
+            return f"⚠️ Medium Risk — Recommended: ₹{premium}/week. {tier_msg}"
         else:
-            return f"🚨 High Risk — Recommended Premium: ₹{premium}/week. Severe conditions expected."
-
-    def _rainfall_impact(self, mm: float) -> Dict[str, Any]:
-        if mm < 10:   return {"level": "Low",    "mm": mm}
-        if mm < 50:   return {"level": "Medium",  "mm": mm}
-        return {"level": "High", "mm": mm, "warning": "Heavy rainfall triggered"}
-
-    def _temperature_impact(self, temp: float) -> Dict[str, Any]:
-        if temp < 35: return {"level": "Low",    "celsius": temp}
-        if temp < 42: return {"level": "Medium",  "celsius": temp}
-        return {"level": "High", "celsius": temp, "warning": "Extreme heat triggered"}
-
-    def _aqi_impact(self, aqi: float) -> Dict[str, Any]:
-        if aqi < 200: return {"level": "Low",    "aqi": aqi}
-        if aqi < 300: return {"level": "Medium",  "aqi": aqi}
-        return {"level": "High", "aqi": aqi, "warning": "Severe pollution triggered"}
-
-    def get_premium_tier_info(self) -> Dict[str, Any]:
-        return {
-            "low_risk":    {"risk_range": "< 0.3",     "premium": PREMIUM_LOW_RISK,  "description": "Stable weather conditions"},
-            "medium_risk": {"risk_range": "0.3 – 0.7", "premium": PREMIUM_MID_RISK,  "description": "Moderate weather impacts"},
-            "high_risk":   {"risk_range": "> 0.7",     "premium": PREMIUM_HIGH_RISK, "description": "Severe disruptions likely"},
-        }
+            return f"🚨 High Risk — Recommended: ₹{premium}/week. {tier_msg}"
