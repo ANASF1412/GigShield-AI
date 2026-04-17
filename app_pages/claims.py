@@ -22,19 +22,21 @@ def show():
     with col_list:
         st.markdown("### Events")
         for c in all_claims:
+            cid = c.get('claim_id', c.get('id', 'N/A'))
             with st.container(border=True):
                 icon = "💸" if c.get('status') in ["PAID", "SETTLED_AFTER_REVIEW"] else "🛡️"
                 res = "PAID" if c.get('status') in ["PAID", "SETTLED_AFTER_REVIEW"] else c.get('status', 'BLOCKED')
-                btn_label = f"{icon} {c['claim_id']} | {res}"
-                if st.button(btn_label, key=f"btn_{c['claim_id']}", use_container_width=True):
-                    st.session_state.audit_trace_id = c['claim_id']
+                btn_label = f"{icon} {cid} | {res}"
+                if st.button(btn_label, key=f"btn_{cid}", use_container_width=True):
+                    st.session_state.audit_trace_id = cid
 
     with col_trace:
-        trace_id = st.session_state.get('audit_trace_id', all_claims[0]['claim_id'])
-        c = next((item for item in all_claims if item["claim_id"] == trace_id), None)
+        first_cid = all_claims[0].get('claim_id', all_claims[0].get('id', 'N/A')) if all_claims else 'N/A'
+        trace_id = st.session_state.get('audit_trace_id', first_cid)
+        c = next((item for item in all_claims if item.get("claim_id", item.get("id")) == trace_id), None)
         
         if c:
-            st.markdown(f"### 🔍 Deep Trace Audit: `{c['claim_id']}`")
+            st.markdown(f"### 🔍 Deep Trace Audit: `{trace_id}`")
             with st.container(border=True):
                 # Regional HUD
                 h1, h2, h3 = st.columns(3)
